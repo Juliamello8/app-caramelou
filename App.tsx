@@ -21,6 +21,9 @@ import {
 
 //COMPONENTES
 import Login from './src/pages/Login';
+import RegisterOng from './src/pages/RegisterOng';
+import RegisterHelp from './src/pages/RegisterHelp';
+import PhotoWall from './src/pages/PhotoWall';
 import ForgotPassword from './src/pages/ForgotPassword';
 import Home from './src/pages/Home';
 import StrayPet from './src/pages/StrayPet';
@@ -98,14 +101,14 @@ const App = (): JSX.Element => {
           name="RegisterStrayPet"
           component={RegisterStrayPet}
           options={{
-            title: "Cadastrar animal abandonado"
+            title: "Cadastro"
           }}
         />
         <Stack.Screen
           name="RegisterPetLost"
           component={RegisterPetLost}
           options={{
-            title: "Cadastrar animal perdido"
+            title: "Cadastro"
           }}
         />
         
@@ -114,6 +117,27 @@ const App = (): JSX.Element => {
           component={HelpRequests}
           options={{
             title: "Pedidos de Ajuda"
+          }}
+        />
+        <Stack.Screen
+          name="RegisterOng"
+          component={RegisterOng}
+          options={{
+            title: "Cadastro"
+          }}
+        />
+        <Stack.Screen
+          name="RegisterHelp"
+          component={RegisterHelp}
+          options={{
+            title: "Cadastro"
+          }}
+        />
+        <Stack.Screen
+          name="PhotoWall"
+          component={PhotoWall}
+          options={{
+            title: "Mural de Fotos"
           }}
         />
         </Stack.Navigator>

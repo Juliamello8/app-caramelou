@@ -66,5 +66,21 @@ export const styles = StyleSheet.create({
         textAlign: 'right',
         paddingBottom: 10,
         fontSize: 12,
+    },
+    buttonNewHelp: {
+        backgroundColor: 'transparent',
+        borderRadius: 50,
+        borderStyle: 'solid',
+        borderColor: '#CE4A00',
+        borderWidth: 2,
+        padding: 15,
+        margin: 10,
+    },
+    textButtonNewHelp: {
+        textAlign: 'center',
+        fontWeight: 'bold',
+        color: '#CE4A00',
+        fontSize: 18,
+        fontFamily: 'Montserrat_400Regular',
     }
 })

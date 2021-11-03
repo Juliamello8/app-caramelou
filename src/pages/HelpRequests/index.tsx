@@ -5,6 +5,7 @@ import { styles } from './styles'
 
 import defaultProfile from '~/assets/iconUser.png'
 import Footer from '~/components/Footer';
+import NavigationService from '~/services/NavigationService';
 const HelpRequests = (): JSX.Element => {
     const [photoProfile, setPhotoProfile] = useState(defaultProfile)
     function toggleHelp() {
@@ -13,6 +14,13 @@ const HelpRequests = (): JSX.Element => {
     return (
         <>
             <ScrollView style={styles.contentsHelpRequests} >
+                <TouchableOpacity
+                    style={styles.buttonNewHelp}
+                    onPress={() => NavigationService.navigate('RegisterHelp')}
+                    accessibilityLabel="Botão para cadastrar novo pedido de ajuda"
+                >
+                    <Text style={styles.textButtonNewHelp}>cadastrar pedido</Text>
+                </TouchableOpacity>
                 <View style={styles.header}>
                     {/* SE PESSOA, ENTÃO photoProfile SE NÃO photoOng */}
                     <Image
