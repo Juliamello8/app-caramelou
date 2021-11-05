@@ -52,6 +52,8 @@ const RegisterUser = (): JSX.Element => {
             cpf: cpfUser,
         });
         console.log("Response: ", response);
+        window.alert("Cadastro efetuado com sucesso!");
+        NavigationService.navigate('Login')
     }
 
     return (
@@ -170,12 +172,6 @@ const RegisterUser = (): JSX.Element => {
                 <TouchableOpacity
                     accessibilityLabel="Botão para finalizar cadastro"
                     style={styles.registerButton}
-                    // onPress={() => {
-                    //     Alert.alert("Parabéns!", "Cadastro realizado com sucesso!", [{
-                    //         onPress: sendRegister
-                    //     }])
-                    // }}
-                    // onPress={() => Alert.alert("Discard changes?", [ { onPress: () => NavigationService.navigate('Login') } ])} // 
                     onPress={sendRegisterUser}
                 >
                     <Text style={styles.registerButtonText}>finalizar cadastro</Text>

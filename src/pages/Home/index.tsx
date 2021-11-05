@@ -2,7 +2,6 @@ import React, { useContext, useEffect } from 'react';
 import { View, ScrollView, TouchableOpacity, Text } from 'react-native';
 
 import Buttons from './components/Buttons';
-// import Header from './Header/Header';
 
 import PetLostCarousel from './components/PetLostCarousel';
 import StrayPetCarousel from './components/StrayPetCarousel';

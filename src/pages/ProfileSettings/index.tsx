@@ -6,10 +6,7 @@ import {
   View,
 } from "react-native";
 
-import { MdOutlineCollectionsBookmark, MdPets, MdOutlineRemoveRedEye } from 'react-icons/md'
-import { FaHandHoldingHeart } from 'react-icons/fa'
-import { BiHomeHeart } from 'react-icons/bi'
-import { IconContext } from "react-icons";
+import { MaterialIcons } from '@expo/vector-icons'
 
 import { styles } from './styles'
 import Footer from "~/components/Footer";
@@ -36,30 +33,28 @@ const ProfileSettings = (): JSX.Element => {
             accessibilityLabel="Botão para listar minhas publicações"
             style={styles.viewButtonsSettings}
           >
-            <IconContext.Provider value={{ size: "18px", color: "#4F4F4F" }} >
-              <MdOutlineCollectionsBookmark />
-            </IconContext.Provider>
+            <MaterialIcons name="dynamic-feed" color="#4F4F4F" size={18} />
             <Text style={styles.textButtonsSettings}>Minhas Publicações</Text>
           </TouchableOpacity>
           <TouchableOpacity
             accessibilityLabel="Botão para listar meus animais perdidos"
             style={styles.viewButtonsSettings}
           >
-            <MdPets/>
+            <MaterialIcons name="pets" color="#4F4F4F" size={18} />
             <Text style={styles.textButtonsSettings}>Meus animais perdidos</Text>
           </TouchableOpacity>
           <TouchableOpacity
             accessibilityLabel="Botão para listar meus pedidos de ajuda"
             style={styles.viewButtonsSettings}
           >
-            <FaHandHoldingHeart />
+            <MaterialIcons name="volunteer-activism" color="#4F4F4F" size={18} />
             <Text style={styles.textButtonsSettings}>Meus pedidos de ajuda</Text>
           </TouchableOpacity>
           <TouchableOpacity
             accessibilityLabel="Botão para entrar na área da minha ONG/Petshop"
             style={styles.viewButtonsSettings}
           >
-            <BiHomeHeart />
+            <MaterialIcons name="domain" color="#4F4F4F" size={24} />
             <Text style={styles.textButtonsSettings}>Minha ONG/Petshop</Text>
           </TouchableOpacity>
         </View>
@@ -68,14 +63,14 @@ const ProfileSettings = (): JSX.Element => {
             accessibilityLabel="Botão para visualizar ONG/Petshop pendentes"
             style={styles.viewButtonsSettings}
           >
-            <MdOutlineRemoveRedEye />
+            <MaterialIcons name="visibility" color="#CE4A00" size={24} />
             <Text style={styles.textButtonsSettings}>ONG's pendentes</Text>
           </TouchableOpacity>
           <TouchableOpacity
             accessibilityLabel="Botão para visualizar pedidos de ajuda pendentes"
             style={styles.viewButtonsSettings}
           >
-            <MdOutlineRemoveRedEye />
+            <MaterialIcons name="visibility" color="#CE4A00" size={24} />
             <Text style={styles.textButtonsSettings}>Pedidos de ajuda pendentes</Text>
           </TouchableOpacity>
         </View>

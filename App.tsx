@@ -23,6 +23,7 @@ import {
 import Login from './src/pages/Login';
 import RegisterOng from './src/pages/RegisterOng';
 import RegisterHelp from './src/pages/RegisterHelp';
+import ProfileSettings from './src/pages/ProfileSettings';
 import PhotoWall from './src/pages/PhotoWall';
 import ForgotPassword from './src/pages/ForgotPassword';
 import Home from './src/pages/Home';
@@ -35,7 +36,7 @@ import HelpRequests from './src/pages/HelpRequests';
 
 //NAVEGATION
 import 'react-native-gesture-handler';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, Theme } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 const Stack = createStackNavigator();
@@ -43,6 +44,18 @@ const Stack = createStackNavigator();
 export const Wrapper = (): JSX.Element => {
   return <ContextWrapper><App /></ContextWrapper>
 }
+
+const MyTheme:Theme = {
+  dark: true,
+  colors: {
+    primary: '#FEAE53',
+    background: '#FFFFFF',
+    card: '#333333',
+    text: '#F2F2F2',
+    border: 'none',
+    notification: '#CE4A00'
+  },
+};
 
 const App = (): JSX.Element => {
   const context = useContext(AppContext);
@@ -60,7 +73,10 @@ const App = (): JSX.Element => {
 
   if (context.store.token != '') {
     return (
-      <NavigationContainer ref={navigationRef}>
+      <NavigationContainer
+        ref={navigationRef}
+        theme={MyTheme}
+      >
       <Stack.Navigator
         initialRouteName="Login"
         screenOptions={{
@@ -70,7 +86,7 @@ const App = (): JSX.Element => {
                 ? NavigationService.navigate("Login")
                 : NavigationService.navigate("Home")}
             >
-              <MaterialIcons name="arrow-back" size={25} />
+              <MaterialIcons name="arrow-back" size={25} color="#fff" style={{paddingLeft: 25}} />
             </TouchableOpacity>
           )
         }}
@@ -140,12 +156,22 @@ const App = (): JSX.Element => {
             title: "Mural de Fotos"
           }}
         />
+        <Stack.Screen
+          name="ProfileSettings"
+          component={ProfileSettings}
+          options={{
+            title: "Fulano da Silva"
+          }}
+        />
         </Stack.Navigator>
       </NavigationContainer>
     )
-  }
+  } else{
   return (
-    <NavigationContainer ref={navigationRef}>
+    <NavigationContainer
+      ref={navigationRef}
+      theme={MyTheme}
+    >
       <Stack.Navigator
         initialRouteName="Login"
         screenOptions={{
@@ -183,6 +209,7 @@ const App = (): JSX.Element => {
       </Stack.Navigator>
     </NavigationContainer>
   );
+}
 }
 
 export default App;

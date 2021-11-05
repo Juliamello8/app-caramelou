@@ -1,12 +1,7 @@
 import React from 'react';
 import { Alert, Image, TouchableOpacity, View } from 'react-native';
 
-import iconHome from "~/assets/iconHome.png";
-import iconPets from "~/assets/iconPets.png";
-import iconGps from "~/assets/iconGps.png";
-// import iconMenu from "~/assets/iconMenu.png";
-import iconUser from "~/assets/iconUserFooter.png";
-import iconHand from "~/assets/iconHandHeart.png"
+import { MaterialIcons } from '@expo/vector-icons'
 
 import { styles } from './styles';
 
@@ -16,48 +11,34 @@ const Footer = (): JSX.Element => {
     return (
         <View style={styles.containerFooter}>
             <TouchableOpacity
-                onPress={() => NavigationService.navigate('Home')}
+                onPress={() => NavigationService.navigate('ProfileSettings')}
             >
-                <Image
-                    source={iconHome}
-                    style={{ width: 30, height: 30 }}
-                />
+                <MaterialIcons name="home" color="#CE4A00" size={30} />
             </TouchableOpacity>
             <TouchableOpacity
                 onPress={() => NavigationService.navigate('StrayPet')}
             >
-                <Image
-                    source={iconPets}
-                    style={{ width: 30, height: 30 }}
-                />
+                <MaterialIcons name="pets" color="#CE4A00" size={30} />
             </TouchableOpacity>
             <TouchableOpacity
                 onPress={() => NavigationService.navigate('PetLost')}
             >
-                <Image
-                    source={iconGps}
-                    style={{ width: 30, height: 30 }}
-                />
+                <MaterialIcons name="gps-fixed" color="#CE4A00" size={30} />
             </TouchableOpacity>
             <TouchableOpacity
                 onPress={() => NavigationService.navigate('HelpRequests')}
             >
-                <Image
-                    source={iconHand}
-                    style={{ width: 30, height: 30 }}
-                />
+                <MaterialIcons name="volunteer-activism" color="#CE4A00" size={30} />
             </TouchableOpacity>
             <TouchableOpacity
-                onPress={() => {
-                    Alert.alert("Poxa, volte logo! :( ", "Você realizou o logout e será redirecionado à tela de Login.", [{
-                        onPress: () => NavigationService.navigate('Login')
-                    }])
-                }}
+                // onPress={() => {
+                //     Alert.alert("Poxa, volte logo! :( ", "Você realizou o logout e será redirecionado à tela de Login.", [{
+                //         onPress: () => NavigationService.navigate('Login')
+                //     }])
+                // }}
+                onPress={() => NavigationService.navigate('ProfileSettings')}
             >
-                <Image
-                    source={iconUser}
-                    style={{ width: 30, height: 30 }}
-                />
+                <MaterialIcons name="account-circle" color="#CE4A00" size={30} />
             </TouchableOpacity>
         </ View >
     )
