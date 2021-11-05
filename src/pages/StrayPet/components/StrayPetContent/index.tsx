@@ -1,11 +1,11 @@
 import React from 'react'
 import { View, Image, Text } from 'react-native';
+import { MaterialIcons } from '@expo/vector-icons'
 
 import { styles } from './styles';
 
 import strayBig1 from "~/assets/strayBig1.png";
 import strayBig2 from "~/assets/strayBig2.png";
-import pinMap from "~/assets/iconPinMap.png";
 import api from '~/services/api';
 
 const StrayPetContent = (): JSX.Element => {
@@ -19,7 +19,7 @@ const StrayPetContent = (): JSX.Element => {
                 style={styles.imgStrayBig}
             />
             <View style={styles.containerLocation}>
-                <Image source={pinMap} />
+                <MaterialIcons name="location-on" color="#CE4A00" size={25}/>
                 <Text style={styles.locationPet}>
                     Rua Arthur Manoel Iwersen, 570
                 </Text>
@@ -33,7 +33,7 @@ const StrayPetContent = (): JSX.Element => {
                 style={styles.imgStrayBig}
             />
             <View style={styles.containerLocation}>
-                <Image source={pinMap} />
+                <MaterialIcons name="location-on" color="#CE4A00" size={25}/>
                 <Text style={styles.locationPet}>
                     Rua Billy, 100
                 </Text>

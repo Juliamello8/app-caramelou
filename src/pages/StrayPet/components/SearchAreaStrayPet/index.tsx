@@ -1,10 +1,8 @@
 import React from 'react'
 import { View, TouchableOpacity, Image } from 'react-native';
+import { MaterialIcons } from '@expo/vector-icons'
 
 import { styles } from './styles';
-
-import searchIcon from "~/assets/iconSearch.png";
-import filterIcon from "~/assets/iconFilterMenu.png";
 
 const SearchAreaStrayPet = (): JSX.Element => {
     function onPressSearchStrayPet() {
@@ -18,16 +16,11 @@ const SearchAreaStrayPet = (): JSX.Element => {
                 accessibilityLabel="Botão para pesquisa de animais de rua"
                 style={styles.searchStrayPetButton}
             >
-                <Image
-                    source={searchIcon}
-                    style={styles.searchImg}
-                />
+                <MaterialIcons name="search" color="#4F4F4F" size={25} style={styles.searchImg}/>
+
             </TouchableOpacity>
             <TouchableOpacity>
-                <Image
-                    source={filterIcon}
-                    style={styles.filterIcon}
-                />
+                <MaterialIcons name="filter-alt" color="#4F4F4F" size={25} style={styles.filterIcon}/>
             </TouchableOpacity>
         </View>
     )

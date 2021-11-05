@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { View, Image, Text } from 'react-native';
+import { MaterialIcons } from '@expo/vector-icons'
 
 import { styles } from './styles';
 
 import lostBig1 from "~/assets/lostBig1.png";
 import lostBig2 from "~/assets/lostBig2.png";
-import pinMap from "~/assets/iconPinMap.png";
 import api from '~/services/api';
 
 const PetLostContent = (): JSX.Element => {
@@ -36,7 +36,7 @@ const PetLostContent = (): JSX.Element => {
                 style={styles.imgLostBig}
             />
             <View style={styles.containerLocation} >
-                <Image source={pinMap} />
+                <MaterialIcons name="location-on" color="#CE4A00" size={25}/>
                 <Text style={styles.locationPet}>
                     {/* {dataPet} */}
                 </Text>

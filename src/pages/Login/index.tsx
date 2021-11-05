@@ -6,6 +6,7 @@ import {
     TouchableOpacity,
     Text,
 } from 'react-native';
+import { MaterialIcons } from '@expo/vector-icons'
 
 import { styles } from './styles';
 
@@ -21,10 +22,14 @@ import { AppContext } from '~/contexts/auth';
 const Login = (): JSX.Element => {
     const context = useContext(AppContext);
     
+    const [manterLogado, setManterLogado] = useState(true);
     const [userEmail, setUserEmail] = useState('');
     const [password, setPassword] = useState('');
     const [logado, setLogado] = useState(false);
 
+    function toggleManterLogado(){
+        setManterLogado(!manterLogado);
+    }
         const singIn = async () => {
             const response = await api.post<{token:string}>('/login', {
                 mail: userEmail,
@@ -74,9 +79,15 @@ const Login = (): JSX.Element => {
                             </TouchableOpacity>
                             <View style={styles.bottomForm}>
                                 <View style={styles.keepLoggedContainer}>
-                                    <Image
-                                        source={checkboxCheck}
-                                    />
+                                    <TouchableOpacity onPress={toggleManterLogado}>
+                                        <MaterialIcons
+                                            name={manterLogado
+                                                ? "check-box"
+                                                : "check-box-outline-blank"
+                                            }
+                                            color="#BDBDBD" size={16}/>
+                                    </TouchableOpacity>
+
                                     <Text style={styles.keepLogged}> Manter logado</Text>
                                 </View>
                                 <TouchableOpacity
