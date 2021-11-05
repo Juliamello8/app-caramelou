@@ -1,8 +1,10 @@
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
-  containerPhoto: {
-        height: '100%',
+  containerPhoto:{
+    width: '100%',
+  },
+  contentsPhoto: {
         margin: 20,
     },
     imgPetBig: {

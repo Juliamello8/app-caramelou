@@ -1,17 +1,20 @@
 import React from 'react'
-import { View, Image, Text } from 'react-native';
+import { View, Image, Text, ScrollView } from 'react-native';
 
 import { styles } from './styles';
 
 import imgPet from "~/assets/photoWall.png";
 import api from '~/services/api';
+import Footer from '~/components/Footer';
 
 const PhotoWall = (): JSX.Element => {
 
     const dataPet = api.get('/strayPet').then(response => response.data).then(console.log)
 
     return (
-        <View style={styles.containerPhoto}>
+      <>
+      <ScrollView style={styles.containerPhoto}>
+        <View style={styles.contentsPhoto}>
             <Image
                 source={imgPet}
                 style={styles.imgPetBig}
@@ -30,6 +33,9 @@ const PhotoWall = (): JSX.Element => {
                 há 2 min.
             </Text>
         </View>
+      </ScrollView>
+      <Footer/>
+      </>
     )
 };
 
