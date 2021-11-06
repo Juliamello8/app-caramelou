@@ -42,7 +42,9 @@ const HelpRequests = (): JSX.Element => {
                     </TouchableOpacity>
                 </View>
                 <View style={styles.descriptions}>
-                    <Text style={styles.descriptionText}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed malesuada, felis sed elementum vehicula, elit eros tincidunt urna, vel fringilla orci magna a sem.</Text>
+                    <Text style={styles.descriptionText}>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed malesuada, felis sed elementum vehicula, elit eros tincidunt urna, vel fringilla orci magna a sem.
+                    </Text>
                     <Text style={styles.descriptionTime}>há 2 horas</Text>
                 </View>
             </ScrollView>

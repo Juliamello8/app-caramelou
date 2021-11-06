@@ -11,7 +11,7 @@ const Footer = (): JSX.Element => {
     return (
         <View style={styles.containerFooter}>
             <TouchableOpacity
-                onPress={() => NavigationService.navigate('Home')}
+                onPress={() => NavigationService.navigate('PendingHelpRequests')}
             >
                 <MaterialIcons name="home" color="#CE4A00" size={30} />
             </TouchableOpacity>

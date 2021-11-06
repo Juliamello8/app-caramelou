@@ -33,6 +33,8 @@ import RegisterStrayPet from './src/pages/RegisterStrayPet';
 import RegisterPetLost from './src/pages/RegisterPetLost';
 import RegisterUser from './src/pages/RegisterUser';
 import HelpRequests from './src/pages/HelpRequests';
+import PendingOngs from './src/pages/PendingOngs'
+import PendingHelpRequests from './src/pages/PendingHelpRequests'
 
 //NAVEGATION
 import 'react-native-gesture-handler';
@@ -161,6 +163,20 @@ const App = (): JSX.Element => {
           component={ProfileSettings}
           options={{
             title: "Fulano da Silva"
+          }}
+        />
+        <Stack.Screen
+          name="PendingOngs"
+          component={PendingOngs}
+          options={{
+            title: "ONG's Pendentes"
+          }}
+        />
+        <Stack.Screen
+          name="PendingHelpRequests"
+          component={PendingHelpRequests}
+          options={{
+            title: "Pedidos de Ajuda"
           }}
         />
         </Stack.Navigator>
