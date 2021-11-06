@@ -10,6 +10,7 @@ import { MaterialIcons } from '@expo/vector-icons'
 
 import { styles } from './styles'
 import Footer from "~/components/Footer";
+import NavigationService from "~/services/NavigationService";
 
 const ProfileSettings = (): JSX.Element => {
   const [userData, setUserData] = useState('');
@@ -62,6 +63,7 @@ const ProfileSettings = (): JSX.Element => {
           <TouchableOpacity
             accessibilityLabel="Botão para visualizar ONG/Petshop pendentes"
             style={styles.viewButtonsSettings}
+            onPress={() => NavigationService.navigate('PendingOngs')}
           >
             <MaterialIcons name="visibility" color="#CE4A00" size={24} />
             <Text style={styles.textButtonsSettings}>ONG's pendentes</Text>
@@ -69,6 +71,7 @@ const ProfileSettings = (): JSX.Element => {
           <TouchableOpacity
             accessibilityLabel="Botão para visualizar pedidos de ajuda pendentes"
             style={styles.viewButtonsSettings}
+            onPress={() => NavigationService.navigate('PendingHelpRequests')}
           >
             <MaterialIcons name="visibility" color="#CE4A00" size={24} />
             <Text style={styles.textButtonsSettings}>Pedidos de ajuda pendentes</Text>
