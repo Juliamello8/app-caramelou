@@ -35,6 +35,8 @@ import RegisterUser from './src/pages/RegisterUser';
 import HelpRequests from './src/pages/HelpRequests';
 import PendingOngs from './src/pages/PendingOngs'
 import PendingHelpRequests from './src/pages/PendingHelpRequests'
+import ListOngs from './src/pages/ListOngs'
+import RegisterAdopted from './src/pages/RegisterAdopted'
 
 //NAVEGATION
 import 'react-native-gesture-handler';
@@ -177,6 +179,20 @@ const App = (): JSX.Element => {
           component={PendingHelpRequests}
           options={{
             title: "Pedidos de Ajuda"
+          }}
+        />
+        <Stack.Screen
+          name="ListOngs"
+          component={ListOngs}
+          options={{
+            title: "Lista de ONG's Cadastradas"
+          }}
+        />
+        <Stack.Screen
+          name="RegisterAdopted"
+          component={RegisterAdopted}
+          options={{
+            title: "Adoteei <3"
           }}
         />
         </Stack.Navigator>

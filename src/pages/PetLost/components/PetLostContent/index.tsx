@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { View, Image, Text } from 'react-native';
+import { View, Image, Text, TouchableOpacity } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons'
 
 import { styles } from './styles';
@@ -7,6 +7,7 @@ import { styles } from './styles';
 import lostBig1 from "~/assets/lostBig1.png";
 import lostBig2 from "~/assets/lostBig2.png";
 import api from '~/services/api';
+import NavigationService from '~/services/NavigationService';
 
 const PetLostContent = (): JSX.Element => {
     const [pets, setPets] = useState([])
@@ -38,9 +39,20 @@ const PetLostContent = (): JSX.Element => {
             <View style={styles.containerLocation} >
                 <MaterialIcons name="location-on" color="#CE4A00" size={25}/>
                 <Text style={styles.locationPet}>
-                    {/* {dataPet} */}
+                    Pinheirinho, Curitiba-PR
                 </Text>
             </View>
+            <View style={styles.typeAndDate}>
+                <Text style={styles.textType}>
+                    <strong>Raça:</strong> Vira-lata
+                </Text>
+                <Text style={styles.textDate}>
+                    <strong>Sumiu:</strong> 03/03/2021
+                </Text>
+            </View>
+            <Text style={styles.descriptionPet}>
+                Fugiu de casa, ela é dócil e possui uma coleira azul com o nome Meg. Sumiu na região do Pinheirinho em Curitiba-PR.
+            </Text>
         </View>
     )
 };

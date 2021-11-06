@@ -5,6 +5,7 @@ import { styles } from './styles'
 
 import Footer from '~/components/Footer';
 import { MaterialIcons } from '@expo/vector-icons'
+import NavigationService from '~/services/NavigationService';
 
 const PendingOngs = (): JSX.Element => {
     const [isApproved, setIsApproved]  = useState(false)
@@ -18,7 +19,7 @@ const PendingOngs = (): JSX.Element => {
             <ScrollView style={styles.contentsPendingOngs} >
               <TouchableOpacity
               style={styles.buttonShowList}
-              onPress={approveOng}
+              onPress={()=>{NavigationService.navigate('ListOngs');}}
               accessibilityLabel="Botão para listar ONG's já aprovadas"
               >
                 <Text style={styles.textButtonShowList}>ver ONG's aprovadas</Text>

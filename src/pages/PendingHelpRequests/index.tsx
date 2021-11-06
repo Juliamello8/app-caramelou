@@ -10,7 +10,7 @@ import { MaterialIcons } from '@expo/vector-icons'
 const PendingHelpRequests = (): JSX.Element => {
     const [isApproved, setIsApproved]  = useState(false)
 
-    function approveOng(){
+    function approveHelp(){
       setIsApproved(!isApproved)
     }
 
@@ -19,15 +19,15 @@ const PendingHelpRequests = (): JSX.Element => {
             <ScrollView style={styles.contentsPendingHelps} >
               <TouchableOpacity
               style={styles.buttonShowList}
-              onPress={approveOng}
+              onPress={()=>{NavigationService.navigate('HelpRequests');}}
               accessibilityLabel="Botão para listar pedidos de ajuda já aprovados"
               >
                 <Text style={styles.textButtonShowList}>ver pedidos aprovados</Text>
               </TouchableOpacity>
               <View style={styles.askContainer}>
                 <View style={styles.header}>
-                    <Text style={styles.ongName}>Ração para Cachorros</Text>
-                    <TouchableOpacity onPress={approveOng}>
+                    <Text style={styles.helpTitle}>Ração para Cachorros</Text>
+                    <TouchableOpacity onPress={approveHelp}>
                       <MaterialIcons
                         name={isApproved ? "toggle-on"  : "toggle-off"}
                         color={isApproved ? "#CE4A00"  : "#C4C4C4"}
