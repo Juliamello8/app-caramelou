@@ -36,8 +36,8 @@ const PendingOngs = (): JSX.Element => {
                     </TouchableOpacity>
                 </View>
                 <View style={styles.details}>
-                    <Text style={styles.createdBy}>Criado por <strong>Ciclano Gomes</strong></Text>
-                    <Text style={styles.createdBy}>CNPJ: <strong>0001/00000000-0</strong></Text>
+                    <Text style={styles.createdBy}>Criado por Ciclano Gomes</Text>
+                    <Text style={styles.createdBy}>CNPJ: 0001/00000000-0</Text>
                 </View>
               </View>
             </ScrollView>

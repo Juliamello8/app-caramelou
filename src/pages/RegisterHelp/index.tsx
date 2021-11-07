@@ -50,8 +50,6 @@ const RegisterHelp = (): JSX.Element => {
                         onChangeText={adressPet => setAdressPet(adressPet)}
                         defaultValue={adressPet}
                     />
-                    <Text style={styles.obs}>* Formatos suportados: .jpg, .jpeg, .png, .pdf</Text>
-                    { }
                     <TouchableOpacity
                         accessibilityLabel="Botão para finalizar cadastro do Pedido de Ajuda"
                         style={styles.registerButton}

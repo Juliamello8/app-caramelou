@@ -36,10 +36,10 @@ const PendingHelpRequests = (): JSX.Element => {
                     </TouchableOpacity>
                 </View>
                 <View style={styles.details}>
-                    <Text style={styles.createdBy}>Criado por <strong>Ampara Animal</strong></Text>
+                    <Text style={styles.createdBy}>Criado por Ampara Animal</Text>
                     <Text style={styles.createdBy}>
                       Descrição:
-                      <strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed malesuada, felis sed elementum vehicula, elit eros tincidunt urna, vel fringilla orci magna a sem.</strong>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed malesuada, felis sed elementum vehicula, elit eros tincidunt urna, vel fringilla orci magna a sem.
                       </Text>
                 </View>
               </View>

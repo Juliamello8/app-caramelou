@@ -24,6 +24,7 @@
     "expo-splash-screen": "~0.10.2",
     "expo-updates": "~0.5.4",
     "formik": "^2.2.9",
+    "install": "^0.13.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-native": "~0.63.4",

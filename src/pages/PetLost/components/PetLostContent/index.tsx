@@ -44,10 +44,10 @@ const PetLostContent = (): JSX.Element => {
             </View>
             <View style={styles.typeAndDate}>
                 <Text style={styles.textType}>
-                    <strong>Raça:</strong> Vira-lata
+                    Raça: Vira-lata
                 </Text>
                 <Text style={styles.textDate}>
-                    <strong>Sumiu:</strong> 03/03/2021
+                    Sumiu: 03/03/2021
                 </Text>
             </View>
             <Text style={styles.descriptionPet}>
