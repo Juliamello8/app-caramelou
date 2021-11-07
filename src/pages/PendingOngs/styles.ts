@@ -3,7 +3,6 @@ import { StyleSheet } from 'react-native';
 export const styles = StyleSheet.create({
     contentsPendingOngs: {
         height: '100%',
-        fontFamily: 'Montserrat',
         marginHorizontal: 20,
     },
     header: {

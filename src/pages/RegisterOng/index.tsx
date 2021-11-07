@@ -5,6 +5,7 @@ import Footer from '~/components/Footer';
 import { styles } from './styles';
 
 import api from '~/services/api';
+import NavigationService from '~/services/NavigationService';
 
 const RegisterOng = (): JSX.Element => {
     const [typePet, setTypePet] = useState('');
@@ -64,6 +65,7 @@ const RegisterOng = (): JSX.Element => {
                     <TouchableOpacity
                         accessibilityLabel="Botão para cancelar cadastro da ONG/Petshop"
                         style={styles.cancelButton}
+                        onPress={() => NavigationService.navigate('Home')}
                     >
                         <Text style={styles.cancelButtonText}>cancelar</Text>
                     </TouchableOpacity>

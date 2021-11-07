@@ -22,11 +22,32 @@ const ProfileSettings = (): JSX.Element => {
   }
 
   function excludeUser(){
-    api.delete('/users/1') //ARRUMAR EXCLUSÃO
-    Alert.alert('Conta excluída!')
+    Alert.alert("Conta excluída!")
+    api.delete('/users/1')
+    NavigationService.navigate('Login')
+
+  }
+  function excludeAlert(){
+    Alert.alert(
+      "Excluir Conta",
+      "Tem certeza que deseja excluir sua conta?",
+      [
+        {
+          text: "Cancelar",
+          onPress: () =>  NavigationService.navigate('ProfileSettings') ,
+          style: "cancel"
+        },
+        { text: "Excluir!",
+          onPress: () => excludeUser(),
+        }
+      ]
+    );
+   
+  }
+  function logout() {
+    Alert.alert('Até mais! :) ')
     NavigationService.navigate('Login')
   }
-
   return(
     <>
       <ScrollView style={styles.settingsUsersConteiner}>
@@ -67,9 +88,17 @@ const ProfileSettings = (): JSX.Element => {
             <Text style={styles.textButtonsSettings}>Minha ONG/Petshop</Text>
           </TouchableOpacity>
           <TouchableOpacity
+            accessibilityLabel="Botão para fazer logoff"
+            style={styles.viewButtonsSettings}
+            onPress={logout}
+          >
+            <MaterialIcons name="logout" color="#4F4F4F" size={24} />
+            <Text style={styles.textButtonsSettings}>Sair</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
             accessibilityLabel="Botão para excluir conta"
             style={styles.viewButtonsSettings}
-            onPress={excludeUser}
+            onPress={excludeAlert}
           >
             <MaterialIcons name="delete" color="#ce0000" size={24} />
             <Text style={styles.textButtonsExclude}>Excluir conta</Text>

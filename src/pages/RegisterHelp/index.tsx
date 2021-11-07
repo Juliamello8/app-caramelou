@@ -6,6 +6,7 @@ import { styles } from './styles';
 
 import api from '~/services/api';
 import { AppContext } from '~/contexts/auth';
+import NavigationService from '~/services/NavigationService';
 
 const RegisterHelp = (): JSX.Element => {
     const context = useContext(AppContext);
@@ -66,6 +67,7 @@ const RegisterHelp = (): JSX.Element => {
                     <TouchableOpacity
                         accessibilityLabel="Botão para cancelar cadastro do Pedido de Ajuda"
                         style={styles.cancelButton}
+                        onPress={() => NavigationService.navigate('Home')}
                     >
                         <Text style={styles.cancelButtonText}>cancelar</Text>
                     </TouchableOpacity>

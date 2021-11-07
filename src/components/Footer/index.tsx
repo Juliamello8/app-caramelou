@@ -23,7 +23,7 @@ const Footer = (): JSX.Element => {
             <TouchableOpacity
                 onPress={() => NavigationService.navigate('PetLost')}
             >
-                <MaterialIcons name="gps-fixed" color="#CE4A00" size={30} />
+                <MaterialIcons name="not-listed-location" color="#CE4A00" size={30} />
             </TouchableOpacity>
             <TouchableOpacity
                 onPress={() => NavigationService.navigate('HelpRequests')}

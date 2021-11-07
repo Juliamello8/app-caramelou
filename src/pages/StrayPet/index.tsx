@@ -12,7 +12,7 @@ const StrayPet = (): JSX.Element => {
         <>
             <ScrollView style={styles.containerStray}>
                 <View style={styles.contentsStray}>
-                    <SearchAreaStrayPet />
+                    {/* <SearchAreaStrayPet /> */}
                     <StrayPetContent />
                 </View>
             </ScrollView>

@@ -3,7 +3,6 @@ import { StyleSheet } from 'react-native';
 export const styles = StyleSheet.create({
   contentsListOngs: {
         height: '100%',
-        fontFamily: 'Montserrat',
         marginHorizontal: 20,
     },
     header: {

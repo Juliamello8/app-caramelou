@@ -14,6 +14,7 @@ interface StrayPetProps {
 
 // import NavigationService from '~/services/NavigationService';
 import api from '~/services/api';
+import NavigationService from '~/services/NavigationService';
 
 const RegisterStrayPet = (): JSX.Element => {
     const [typePet, setTypePet] = useState('');
@@ -99,6 +100,7 @@ const RegisterStrayPet = (): JSX.Element => {
                     <TouchableOpacity
                         accessibilityLabel="Botão para cancelar cadastro do animal abandonado"
                         style={styles.cancelButton}
+                        onPress={() => NavigationService.navigate('Home')}
                     >
                         <Text style={styles.cancelButtonText}>cancelar</Text>
                     </TouchableOpacity>

@@ -3,7 +3,6 @@ import { StyleSheet } from 'react-native';
 export const styles = StyleSheet.create({
     contentsHelpRequests: {
         height: '100%',
-        fontFamily: 'Montserrat',
     },
     header: {
         display: 'flex',
