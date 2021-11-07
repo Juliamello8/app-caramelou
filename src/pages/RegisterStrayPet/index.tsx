@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View, ScrollView, TextInput, Text, TouchableOpacity } from 'react-native';
+import { View, ScrollView, TextInput, Text, TouchableOpacity, Alert, PanResponder } from 'react-native';
 import Footer from '~/components/Footer';
 
 import { styles } from './styles';
@@ -30,6 +30,10 @@ const RegisterStrayPet = (): JSX.Element => {
             date: dateFind,
             description: descriptionPet,
         });
+        if ((typePet || adressPet || dateFind || hourFind || descriptionPet) == "") {
+            Alert.alert('Campo obrigatório vazio, favor verificar!')
+            return
+        }
         console.log("Response: ", response);
         const status = response.status
     }
