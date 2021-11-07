@@ -37,6 +37,11 @@ export const styles = StyleSheet.create({
     paddingLeft: 20,
     color: '#4F4F4F',
   },
+  textButtonsExclude: {
+    fontSize: 18,
+    paddingLeft: 20,
+    color: '#ce0000',
+  },
   settingsModeratorContents: {
     borderTopWidth: 1,
     borderTopColor: '#BDBDBD',

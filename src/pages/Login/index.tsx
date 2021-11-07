@@ -1,10 +1,12 @@
 import React, { useContext, useState } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
     View,
     Image,
     TextInput,
     TouchableOpacity,
     Text,
+    Alert
 } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons'
 
@@ -25,19 +27,36 @@ const Login = (): JSX.Element => {
     const [manterLogado, setManterLogado] = useState(true);
     const [userEmail, setUserEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [logado, setLogado] = useState(false);
-
+    const [logado, setLogado] = useState(false)
+    const [errorMessage, setErrorMessage] = useState({});
+    
     function toggleManterLogado(){
         setManterLogado(!manterLogado);
     }
-        const singIn = async () => {
+
+    const singIn = async () => {
+        try {
             const response = await api.post<{token:string}>('/login', {
                 mail: userEmail,
                 password: password,
             });
+    
+            // const { user, token } = response.data;
+    
+            // await AsyncStorage.multiSet([
+            //     ['@Caramelou:token', token],
+            //     ['@Caramelou:user', JSON.stringify(user)],
+            // ])
             console.log("Response: ", response);
             context.actions.setToken(response.data?.token)
+            Alert.alert("Login efetuado com sucesso!")
+
+            // setLogado({user})
+
+        } catch(response) {
+        //     setErrorMessage({ response.data.error });
         }
+    }
 
     const dataUser = api.get('/user').then(response => response.data).then(console.log)
 
@@ -76,6 +95,8 @@ const Login = (): JSX.Element => {
                                 // onPress={() => NavigationService.navigate('Home')}
                             
                             >
+                                { !!logado && <Text> { logado} </Text>}
+                                { !!errorMessage && <Text> { errorMessage }</Text>}
                                 <Text style={styles.buttonLogin}>Entrar</Text>
                             </TouchableOpacity>
                             <View style={styles.bottomForm}>

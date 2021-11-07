@@ -1,28 +1,32 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { View, ScrollView, TextInput, Text, TouchableOpacity } from 'react-native';
 import Footer from '~/components/Footer';
 
 import { styles } from './styles';
 
 import api from '~/services/api';
+import { AppContext } from '~/contexts/auth';
 
 const RegisterHelp = (): JSX.Element => {
-    const [typePet, setTypePet] = useState('');
-    const [adressPet, setAdressPet] = useState('');
-    const [dateFind, setDateFind] = useState('');
-    const [hourFind, setHourFind] = useState('');
-    const [descriptionPet, setDescriptionPet] = useState('');
+    const context = useContext(AppContext);
+    const [nameUser, setNameUser] = useState('');
+    const [titleHelp, setTitleHelp] = useState('');
+    const [descriptionHelp, setDescriptionHelp] = useState('');
+
+
+    useEffect(()=>{
+        const data = api.get('/user')
+        // console.log(data.then.)
+    })
 
     const sendRegister = async () => {
-        const response = await api.post('/strayPet', {
-            type: typePet,
-            location: adressPet,
-            date: dateFind,
-            description: descriptionPet,
+        const response = await api.post('/requestHelp', {
+            user: nameUser,
+            title: titleHelp,
+            description: descriptionHelp,
         });
-        console.log("Response: ", response);
         const status = response.status
-    }
+    }  
 
     return (
         <>
@@ -32,23 +36,24 @@ const RegisterHelp = (): JSX.Element => {
                     <Text style={styles.label}>Pedido de ajuda para:</Text>
                     <TextInput
                         style={styles.input}
-                        placeholder='Selecione uma opção'
-                        onChangeText={typePet => setTypePet(typePet)}
-                        defaultValue={typePet}
+                        // placeholder={nameUser => nameUser}
+                        editable={false}
+                        selectTextOnFocus={false}
+                        defaultValue={nameUser}
                     />
                     <Text style={styles.label}>Título do pedido:</Text>
                     <TextInput
                         style={styles.input}
                         placeholder='Descreva em poucas palavras'
-                        onChangeText={adressPet => setAdressPet(adressPet)}
-                        defaultValue={adressPet}
+                        onChangeText={titleHelp => setTitleHelp(titleHelp)}
+                        defaultValue={titleHelp}
                     />
                     <Text style={styles.label}>Descrição do pedido:</Text>
                     <TextInput
                         style={styles.input}
                         placeholder='Descreva sobre seu pedido com mais detalhes.'
-                        onChangeText={adressPet => setAdressPet(adressPet)}
-                        defaultValue={adressPet}
+                        onChangeText={descriptionHelp => setDescriptionHelp(descriptionHelp)}
+                        defaultValue={descriptionHelp}
                     />
                     <TouchableOpacity
                         accessibilityLabel="Botão para finalizar cadastro do Pedido de Ajuda"

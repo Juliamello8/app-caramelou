@@ -4,6 +4,7 @@ import {
   TouchableOpacity,
   Text,
   View,
+  Alert
 } from "react-native";
 
 import { MaterialIcons } from '@expo/vector-icons'
@@ -11,12 +12,19 @@ import { MaterialIcons } from '@expo/vector-icons'
 import { styles } from './styles'
 import Footer from "~/components/Footer";
 import NavigationService from "~/services/NavigationService";
+import api from "~/services/api";
 
 const ProfileSettings = (): JSX.Element => {
   const [userData, setUserData] = useState('');
 
   function toggleUpdateDataUser(){
 
+  }
+
+  function excludeUser(){
+    api.delete('/users/1') //ARRUMAR EXCLUSÃO
+    Alert.alert('Conta excluída!')
+    NavigationService.navigate('Login')
   }
 
   return(
@@ -57,6 +65,14 @@ const ProfileSettings = (): JSX.Element => {
           >
             <MaterialIcons name="domain" color="#4F4F4F" size={24} />
             <Text style={styles.textButtonsSettings}>Minha ONG/Petshop</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            accessibilityLabel="Botão para excluir conta"
+            style={styles.viewButtonsSettings}
+            onPress={excludeUser}
+          >
+            <MaterialIcons name="delete" color="#ce0000" size={24} />
+            <Text style={styles.textButtonsExclude}>Excluir conta</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.settingsModeratorContents}>
