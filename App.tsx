@@ -198,7 +198,7 @@ const App = (): JSX.Element => {
         </Stack.Navigator>
       </NavigationContainer>
     )
-  } else{
+  }
   return (
     <NavigationContainer
       ref={navigationRef}
@@ -241,7 +241,6 @@ const App = (): JSX.Element => {
       </Stack.Navigator>
     </NavigationContainer>
   );
-}
 }
 
 export default App;

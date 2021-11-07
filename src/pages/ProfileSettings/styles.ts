@@ -3,8 +3,12 @@ import { StyleSheet } from 'react-native';
 export const styles = StyleSheet.create({
   settingsUsersConteiner: {
     width: '100%',
+<<<<<<< HEAD
     height: '100%',
     paddingBottom: 300,
+=======
+    paddingBottom: 80,
+>>>>>>> 6f5eaf8fa9aba414c91293eabaff47c19b92daae
   },
   settingsUsersContents: {
     marginBottom: 40,
