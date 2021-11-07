@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
     contentsStrayPet: {
-        height: '100%',
+        width: '100%',
         margin: 20,
     },
     imgStrayBig: {

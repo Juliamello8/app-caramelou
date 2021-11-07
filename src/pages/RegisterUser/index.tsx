@@ -52,8 +52,12 @@ const RegisterUser = (): JSX.Element => {
             cpf: cpfUser,
         });
         console.log("Response: ", response);
-        window.alert("Cadastro efetuado com sucesso!");
-        NavigationService.navigate('Login')
+        if(response.status === 200) {
+            window.alert("Cadastro efetuado com sucesso!");
+            NavigationService.navigate('Login')
+        } else {
+            window.alert("Erro de cadastro!")
+        }
     }
 
     return (
@@ -146,6 +150,7 @@ const RegisterUser = (): JSX.Element => {
                     <View style={styles.typeAndDate}>
                         <Text style={styles.label}>Crie uma senha:</Text>
                         <TextInput
+                            secureTextEntry={true}
                             style={styles.input}
                             placeholder='Sua senha'
                             onChangeText={password => setPassword(password)}

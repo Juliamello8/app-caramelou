@@ -63,6 +63,7 @@ const Login = (): JSX.Element => {
                                 defaultValue={userEmail}
                             />
                             <TextInput
+                                secureTextEntry={true}
                                 style={styles.input}
                                 placeholder='sua senha'
                                 onChangeText={password => setPassword(password)}
