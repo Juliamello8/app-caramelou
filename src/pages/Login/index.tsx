@@ -1,14 +1,11 @@
 import React, { useContext, useState } from 'react';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
     View,
     Image,
     TextInput,
     TouchableOpacity,
     Text,
-    Alert
 } from 'react-native';
-import { MaterialIcons } from '@expo/vector-icons'
 
 import { styles } from './styles';
 
@@ -24,39 +21,18 @@ import { AppContext } from '~/contexts/auth';
 const Login = (): JSX.Element => {
     const context = useContext(AppContext);
     
-    const [manterLogado, setManterLogado] = useState(true);
     const [userEmail, setUserEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [logado, setLogado] = useState(false)
-    const [errorMessage, setErrorMessage] = useState({});
-    
-    function toggleManterLogado(){
-        setManterLogado(!manterLogado);
-    }
+    const [logado, setLogado] = useState(false);
 
-    const singIn = async () => {
-        try {
+        const singIn = async () => {
             const response = await api.post<{token:string}>('/login', {
                 mail: userEmail,
                 password: password,
             });
-    
-            // const { user, token } = response.data;
-    
-            // await AsyncStorage.multiSet([
-            //     ['@Caramelou:token', token],
-            //     ['@Caramelou:user', JSON.stringify(user)],
-            // ])
             console.log("Response: ", response);
             context.actions.setToken(response.data?.token)
-            Alert.alert("Login efetuado com sucesso!")
-
-            // setLogado({user})
-
-        } catch(response) {
-        //     setErrorMessage({ response.data.error });
         }
-    }
 
     const dataUser = api.get('/user').then(response => response.data).then(console.log)
 
@@ -82,34 +58,23 @@ const Login = (): JSX.Element => {
                                 defaultValue={userEmail}
                             />
                             <TextInput
-                                secureTextEntry={true}
                                 style={styles.input}
                                 placeholder='sua senha'
+                                secureTextEntry={true}
                                 onChangeText={password => setPassword(password)}
                                 defaultValue={password}
                             />
                             <TouchableOpacity
                                 accessibilityLabel="Botão para entrar no sistema"
                                 onPress={singIn}
-                                // onPress={singIn}
-                                // onPress={() => NavigationService.navigate('Home')}
-                            
                             >
-                                { !!logado && <Text> { logado} </Text>}
-                                { !!errorMessage && <Text> { errorMessage }</Text>}
                                 <Text style={styles.buttonLogin}>Entrar</Text>
                             </TouchableOpacity>
                             <View style={styles.bottomForm}>
                                 <View style={styles.keepLoggedContainer}>
-                                    <TouchableOpacity onPress={toggleManterLogado}>
-                                        <MaterialIcons
-                                            name={manterLogado
-                                                ? "check-box"
-                                                : "check-box-outline-blank"
-                                            }
-                                            color="#BDBDBD" size={16}/>
-                                    </TouchableOpacity>
-
+                                    <Image
+                                        source={checkboxCheck}
+                                    />
                                     <Text style={styles.keepLogged}> Manter logado</Text>
                                 </View>
                                 <TouchableOpacity

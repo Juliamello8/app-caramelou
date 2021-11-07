@@ -3,7 +3,9 @@ import { StyleSheet } from 'react-native';
 export const styles = StyleSheet.create({
     contentsStrayPet: {
         width: '100%',
-        margin: 20,
+        padding: 20,
+        display: 'flex',
+        justifyContent: 'center'
     },
     imgStrayBig: {
         width: 360,
@@ -19,6 +21,7 @@ export const styles = StyleSheet.create({
         fontSize: 14,
         color: '#828282',
         marginBottom: 20,
+        width: '70%',
     },
     containerLocation: {
         display: 'flex',
