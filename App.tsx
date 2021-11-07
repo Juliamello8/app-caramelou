@@ -185,7 +185,7 @@ const App = (): JSX.Element => {
           name="ListOngs"
           component={ListOngs}
           options={{
-            title: "Lista de ONG's Cadastradas"
+            title: "Parceiros"
           }}
         />
         <Stack.Screen

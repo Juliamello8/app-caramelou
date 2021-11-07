@@ -11,6 +11,14 @@
     },
     "assetBundlePatterns": [
       "**/*"
+    ],
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "O aplicativo acessa suas fotos para você compartilhar a foto dos animais."
+        }
+      ]
     ]
   }
 }

@@ -81,11 +81,20 @@ const ProfileSettings = (): JSX.Element => {
             <Text style={styles.textButtonsSettings}>Meus pedidos de ajuda</Text>
           </TouchableOpacity>
           <TouchableOpacity
-            accessibilityLabel="Botão para entrar na área da minha ONG/Petshop"
+            accessibilityLabel="Botão para registrar minha ONG/Petshop"
             style={styles.viewButtonsSettings}
+            onPress={() => NavigationService.navigate('RegisterOng')}
           >
             <MaterialIcons name="domain" color="#4F4F4F" size={24} />
-            <Text style={styles.textButtonsSettings}>Minha ONG/Petshop</Text>
+            <Text style={styles.textButtonsSettings}>Cadastrar ONG/Petshop</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            accessibilityLabel="Botão para listar ONG's e Petshops cadastrados"
+            style={styles.viewButtonsSettings}
+            onPress={() => NavigationService.navigate('ListOngs')}
+          >
+            <MaterialIcons name="domain" color="#4F4F4F" size={24} />
+            <Text style={styles.textButtonsSettings}>Parceiros</Text>
           </TouchableOpacity>
           <TouchableOpacity
             accessibilityLabel="Botão para fazer logoff"

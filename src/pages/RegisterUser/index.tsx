@@ -20,6 +20,7 @@ interface UserProps {
 
 import NavigationService from '~/services/NavigationService';
 import api from '~/services/api';
+import * as ImagePicker from 'expo-image-picker';
 
 const RegisterUser = (): JSX.Element => {
     const [userName, setUserName] = useState('');
@@ -33,6 +34,18 @@ const RegisterUser = (): JSX.Element => {
     const [phoneNumber, setPhoneNumber] = useState('');
     const [password, setPassword] = useState('');
     const [cpfUser, setCpfUser] = useState('');
+
+    let openImagePickerAsync = async () => {
+        let permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
+    
+        if (permissionResult.granted === false) {
+          alert("Permission to access camera roll is required!");
+          return;
+        }
+    
+        let pickerResult = await ImagePicker.launchImageLibraryAsync();
+        console.log(pickerResult);
+      }
 
     const sendRegisterUser = async () => {
         const response = await api.post('/user', {
@@ -166,6 +179,7 @@ const RegisterUser = (): JSX.Element => {
 
                 <TouchableOpacity
                     accessibilityLabel="Botão anexar foto de perfil"
+                    onPress={openImagePickerAsync}
                 >
                     <Text style={styles.attPhoto}>Anexar foto de perfil</Text>
                 </TouchableOpacity>
