@@ -34,17 +34,19 @@ const RegisterUser = (): JSX.Element => {
     const [phoneNumber, setPhoneNumber] = useState('');
     const [password, setPassword] = useState('');
     const [cpfUser, setCpfUser] = useState('');
+    const [imageUser, setImageUser] = useState(Object);
 
     let openImagePickerAsync = async () => {
         let permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
-    
+        
         if (permissionResult.granted === false) {
-          alert("Permission to access camera roll is required!");
+          alert("Permissão de acesso ao rolo da camera é neceesário!");
           return;
         }
     
         let pickerResult = await ImagePicker.launchImageLibraryAsync();
         console.log(pickerResult);
+        setImageUser(console.log(pickerResult.cancelled))
       }
 
     const sendRegisterUser = async () => {
@@ -59,6 +61,7 @@ const RegisterUser = (): JSX.Element => {
             phone: phoneNumber,
             birthDate: btdayUser,
             cpf: cpfUser,
+            image: imageUser,
         });
         console.log("Response: ", response);
         if(response.status === 200) {
