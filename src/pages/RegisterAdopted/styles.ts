@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 export const styles = StyleSheet.create({
     contentsRegisterAdopted: {
         width: '100%',
-        margin: 20,
+        padding: 20,
     },
     imgStrayBig: {
         width: 360,

@@ -36,7 +36,7 @@ const RegisterHelp = (): JSX.Element => {
                     <Text style={styles.label}>Pedido de ajuda para:</Text>
                     <TextInput
                         style={styles.input}
-                        // placeholder={nameUser => nameUser}
+                        placeholder='Nome aqui'
                         editable={false}
                         selectTextOnFocus={false}
                         defaultValue={nameUser}
