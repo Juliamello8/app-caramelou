@@ -18,10 +18,6 @@ interface UserProps {
     values: Login;
 }
 
-function AlertRegister() {
-
-}
-
 import NavigationService from '~/services/NavigationService';
 import api from '~/services/api';
 
@@ -53,10 +49,10 @@ const RegisterUser = (): JSX.Element => {
         });
         console.log("Response: ", response);
         if(response.status === 200) {
-            window.alert("Cadastro efetuado com sucesso!");
+            Alert.alert("Cadastro efetuado com sucesso!");
             NavigationService.navigate('Login')
         } else {
-            window.alert("Erro de cadastro!")
+            Alert.alert("Erro de cadastro!")
         }
     }
 

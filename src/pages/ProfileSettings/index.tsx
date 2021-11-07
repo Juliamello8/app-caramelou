@@ -97,9 +97,9 @@ const ProfileSettings = (): JSX.Element => {
           <TouchableOpacity
             style={styles.buttonAddModerator}
             onPress={toggleUpdateDataUser}
-            accessibilityLabel="Botão para atualizar dados do usuário"
+            accessibilityLabel="Botão para adicionar moderador"
           >
-            <Text style={styles.textButtonAddModerator}>atualizar dados</Text>
+            <Text style={styles.textButtonAddModerator}>+ moderador</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>
