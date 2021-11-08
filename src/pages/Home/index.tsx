@@ -17,13 +17,16 @@ const Home = (): JSX.Element => {
   const context = useContext(AppContext);
   
   useEffect(()=>{
+    api.setHeaders({Authorization: `Bearer ${context.store.token}`})
     getUsers()
   },[])
   
   const getUsers = async () => {
-    api.setHeaders({Authorization: `Bearer ${context.store.token}`})
     const userData = await api.get('/user')
     console.log({userData})
+    if(userData.ok && userData.data){
+      context.actions.setCurrentUser(userData.data)
+    }
   }
 
   return (

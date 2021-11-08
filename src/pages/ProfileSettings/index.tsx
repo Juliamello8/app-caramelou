@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import {
   ScrollView,
   TouchableOpacity,
@@ -13,9 +13,11 @@ import { styles } from './styles'
 import Footer from "~/components/Footer";
 import NavigationService from "~/services/NavigationService";
 import api from "~/services/api";
+import { AppContext } from "~/contexts/auth";
 
 const ProfileSettings = (): JSX.Element => {
   const [userData, setUserData] = useState('');
+  const authContext = useContext(AppContext);
 
   function toggleUpdateDataUser(){
 
@@ -47,7 +49,8 @@ const ProfileSettings = (): JSX.Element => {
 
   function logoutUser(){
     Alert.alert('Até mais! :) ')
-    NavigationService.navigate('Login')
+    // NavigationService.navigate('Login')
+    authContext.actions.signOut();
   }
 
   function logoutAlert() {

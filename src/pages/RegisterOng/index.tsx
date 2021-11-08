@@ -8,20 +8,15 @@ import api from '~/services/api';
 import NavigationService from '~/services/NavigationService';
 
 const RegisterOng = (): JSX.Element => {
-    const [typePet, setTypePet] = useState('');
-    const [adressPet, setAdressPet] = useState('');
-    const [dateFind, setDateFind] = useState('');
-    const [hourFind, setHourFind] = useState('');
-    const [descriptionPet, setDescriptionPet] = useState('');
+    const [nameONG, setNameONG] = useState('');
+    const [cnpjONG, setCnpjONG] = useState('');
 
     const sendRegister = async () => {
-        const response = await api.post('/strayPet', {
-            type: typePet,
-            location: adressPet,
-            date: dateFind,
-            description: descriptionPet,
+        const response = await api.post('/ongPet', {
+            name: nameONG,
+            cnpj: cnpjONG,
         });
-        if (typePet == ""  || adressPet == ""  || dateFind == "" || descriptionPet == "") {
+        if (nameONG == ""  || cnpjONG == "") {
             Alert.alert('Campo obrigatório vazio, favor verificar!')
             return
         }
@@ -40,15 +35,15 @@ const RegisterOng = (): JSX.Element => {
                     <TextInput
                         style={styles.input}
                         placeholder='Ex.: Amigo dos Animais'
-                        onChangeText={typePet => setTypePet(typePet)}
-                        defaultValue={typePet}
+                        onChangeText={nameONG => setNameONG(nameONG)}
+                        defaultValue={nameONG}
                     />
                     <Text style={styles.label}>CNPJ:</Text>
                     <TextInput
                         style={styles.input}
                         placeholder='000.000.000-00'
-                        onChangeText={adressPet => setAdressPet(adressPet)}
-                        defaultValue={adressPet}
+                        onChangeText={cnpjONG => setCnpjONG(cnpjONG)}
+                        defaultValue={cnpjONG}
                     />
                     <Text style={styles.label}>
                         Anexe um documento que comprove que é dono desta ONG/Petshop:

@@ -34,7 +34,7 @@ const RegisterUser = (): JSX.Element => {
     const [phoneNumber, setPhoneNumber] = useState('');
     const [password, setPassword] = useState('');
     const [cpfUser, setCpfUser] = useState('');
-    const [imageUser, setImageUser] = useState(Object);
+    const [imageUser, setImageUser] = useState('');
 
     let openImagePickerAsync = async () => {
         let permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
@@ -46,7 +46,7 @@ const RegisterUser = (): JSX.Element => {
     
         let pickerResult = await ImagePicker.launchImageLibraryAsync();
         console.log(pickerResult);
-        setImageUser(console.log(pickerResult.cancelled))
+        //setImageUser(console.log(pickerResult.cancelled))
       }
 
     const sendRegisterUser = async () => {
