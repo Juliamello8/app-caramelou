@@ -34,7 +34,7 @@ const RegisterUser = (): JSX.Element => {
     const [phoneNumber, setPhoneNumber] = useState('');
     const [password, setPassword] = useState('');
     const [cpfUser, setCpfUser] = useState('');
-    const [imageUser, setImageUser] = useState(Object);
+    const [imageUser, setImageUser] = useState('');
 
     let openImagePickerAsync = async () => {
         let permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
@@ -46,7 +46,7 @@ const RegisterUser = (): JSX.Element => {
     
         let pickerResult = await ImagePicker.launchImageLibraryAsync();
         console.log(pickerResult);
-        setImageUser(console.log(pickerResult.cancelled))
+        //setImageUser(console.log(pickerResult.cancelled))
       }
 
     const sendRegisterUser = async () => {
@@ -63,6 +63,12 @@ const RegisterUser = (): JSX.Element => {
             cpf: cpfUser,
             image: imageUser,
         });
+        if (userName == ""  || userEmail == ""  || password == ""  || userAdress == ""  || adressNumber == "" || stateUser == "" ||
+        zipCode == "" || phoneNumber == "" || btdayUser == "" || cpfUser == "" /*|| imageUser == ""*/) {
+            //Lembrar de verificar Imagem se entra como string vazia caso não coloquem imagem
+            Alert.alert('Campo obrigatório vazio, favor verificar!')
+            return
+        }
         console.log("Response: ", response);
         if(response.status === 200) {
             Alert.alert("Cadastro efetuado com sucesso!");

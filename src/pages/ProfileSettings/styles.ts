@@ -4,7 +4,7 @@ export const styles = StyleSheet.create({
   settingsUsersConteiner: {
     width: 'auto',
     paddingBottom : 100,
-    marginBottom: 85,
+    marginBottom: 80,
   },
   settingsUsersContents: {
     marginBottom: 40,

@@ -5,6 +5,7 @@ import {
     TextInput,
     TouchableOpacity,
     Text,
+    Alert,
 } from 'react-native';
 
 import { styles } from './styles';
@@ -25,14 +26,28 @@ const Login = (): JSX.Element => {
     const [password, setPassword] = useState('');
     const [logado, setLogado] = useState(false);
 
-        const singIn = async () => {
-            const response = await api.post<{token:string}>('/login', {
-                mail: userEmail,
-                password: password,
-            });
-            console.log("Response: ", response);
-            context.actions.setToken(response.data?.token)
+    const singIn = async () => {
+        if (userEmail == ""  || password == "") {
+            Alert.alert('Campo obrigatório vazio, favor verificar!')
+            return
         }
+        
+        const response = await api.post<{token:string}>('/login', {
+            mail: userEmail,
+            password: password,
+        });
+        console.log({data: response.data, ok: response.ok, status: response.status});
+        if(!response.ok){
+            Alert.alert('Erro de conexão')
+            return;
+        }
+        if(!response.data?.token){
+            Alert.alert('Usuario ou senha errados')
+            return;
+        }
+        context.actions.setToken(response.data?.token)
+
+    }
 
     const dataUser = api.get('/user').then(response => response.data).then(console.log)
 

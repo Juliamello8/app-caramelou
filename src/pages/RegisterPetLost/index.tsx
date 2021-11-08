@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View, ScrollView, TextInput, Text, TouchableOpacity } from 'react-native';
+import { View, ScrollView, TextInput, Text, TouchableOpacity, Alert } from 'react-native';
 import Footer from '~/components/Footer';
 
 import { styles } from './styles';
@@ -32,6 +32,12 @@ const RegisterPetLost = (): JSX.Element => {
             description: descriptionPet,
             breed: breedPet,
         });
+        if (namePet == ""  || typePet == ""  || lastLocation == ""  || dateLost == ""  || descriptionPet == "" || breedPet == "") {
+            Alert.alert('Campo obrigatório vazio, favor verificar!')
+            return
+        }
+        Alert.alert('Registrado com sucesso! :D')
+        NavigationService.navigate('Home')
         console.log("Response: ", response);
     }
 

@@ -99,7 +99,7 @@ const App = (): JSX.Element => {
           name="Home"
           component={Home}
           options={{
-            title: "Olá Fulano, ",
+            title: `Olá ${context.user?.name},`,
             headerLeft: () => <></>
           }}
         />
@@ -164,7 +164,7 @@ const App = (): JSX.Element => {
           name="ProfileSettings"
           component={ProfileSettings}
           options={{
-            title: "Fulano da Silva"
+            title: `${context.user?.name}`,
           }}
         />
         <Stack.Screen
