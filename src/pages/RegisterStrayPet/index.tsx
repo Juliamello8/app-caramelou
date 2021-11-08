@@ -30,10 +30,12 @@ const RegisterStrayPet = (): JSX.Element => {
             date: dateFind,
             description: descriptionPet,
         });
-        if ((typePet || adressPet || dateFind || hourFind || descriptionPet) == "") {
+        if (typePet == ""  || adressPet == ""  || dateFind == ""  || hourFind == ""  || descriptionPet == "" ) {
             Alert.alert('Campo obrigatório vazio, favor verificar!')
             return
         }
+        Alert.alert('Registrado com sucesso! :D')
+        NavigationService.navigate('Home')
         console.log("Response: ", response);
         const status = response.status
     }

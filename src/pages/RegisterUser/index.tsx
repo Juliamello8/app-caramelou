@@ -63,6 +63,12 @@ const RegisterUser = (): JSX.Element => {
             cpf: cpfUser,
             image: imageUser,
         });
+        if (userName == ""  || userEmail == ""  || password == ""  || userAdress == ""  || adressNumber == "" || stateUser == "" ||
+        zipCode == "" || phoneNumber == "" || btdayUser == "" || cpfUser == "" /*|| imageUser == ""*/) {
+            //Lembrar de verificar Imagem se entra como string vazia caso não coloquem imagem
+            Alert.alert('Campo obrigatório vazio, favor verificar!')
+            return
+        }
         console.log("Response: ", response);
         if(response.status === 200) {
             Alert.alert("Cadastro efetuado com sucesso!");

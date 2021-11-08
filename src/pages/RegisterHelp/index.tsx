@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { View, ScrollView, TextInput, Text, TouchableOpacity } from 'react-native';
+import { View, ScrollView, TextInput, Text, TouchableOpacity, Alert } from 'react-native';
 import Footer from '~/components/Footer';
 
 import { styles } from './styles';
@@ -26,6 +26,12 @@ const RegisterHelp = (): JSX.Element => {
             title: titleHelp,
             description: descriptionHelp,
         });
+        if (/*nameUser == "" || */ titleHelp == ""  || descriptionHelp == "") {
+            Alert.alert('Campo obrigatório vazio, favor verificar!')
+            return
+        }
+        Alert.alert('Registrado com sucesso! :D')
+        NavigationService.navigate('Home')
         const status = response.status
     }  
 
@@ -37,7 +43,7 @@ const RegisterHelp = (): JSX.Element => {
                     <Text style={styles.label}>Pedido de ajuda para:</Text>
                     <TextInput
                         style={styles.input}
-                        placeholder='Nome aqui'
+                        placeholder={nameUser}
                         editable={false}
                         selectTextOnFocus={false}
                         defaultValue={nameUser}

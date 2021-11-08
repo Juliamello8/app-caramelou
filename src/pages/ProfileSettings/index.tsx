@@ -44,9 +44,27 @@ const ProfileSettings = (): JSX.Element => {
     );
    
   }
-  function logout() {
+
+  function logoutUser(){
     Alert.alert('Até mais! :) ')
     NavigationService.navigate('Login')
+  }
+
+  function logoutAlert() {
+      Alert.alert(
+        "Realizar Logoff",
+        "Tem certeza que deseja sair?",
+        [
+          {
+            text: "Cancelar",
+            onPress: () =>  NavigationService.navigate('ProfileSettings') ,
+            style: "cancel"
+          },
+          { text: "Sair!",
+            onPress: () => logoutUser(),
+          }
+        ]
+      );
   }
   return(
     <>
@@ -99,7 +117,7 @@ const ProfileSettings = (): JSX.Element => {
           <TouchableOpacity
             accessibilityLabel="Botão para fazer logoff"
             style={styles.viewButtonsSettings}
-            onPress={logout}
+            onPress={logoutAlert}
           >
             <MaterialIcons name="logout" color="#4F4F4F" size={24} />
             <Text style={styles.textButtonsSettings}>Sair</Text>

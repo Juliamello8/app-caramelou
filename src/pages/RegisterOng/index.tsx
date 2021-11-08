@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View, ScrollView, TextInput, Text, TouchableOpacity } from 'react-native';
+import { View, ScrollView, TextInput, Text, TouchableOpacity, Alert } from 'react-native';
 import Footer from '~/components/Footer';
 
 import { styles } from './styles';
@@ -21,6 +21,12 @@ const RegisterOng = (): JSX.Element => {
             date: dateFind,
             description: descriptionPet,
         });
+        if (typePet == ""  || adressPet == ""  || dateFind == "" || descriptionPet == "") {
+            Alert.alert('Campo obrigatório vazio, favor verificar!')
+            return
+        }
+        Alert.alert('Registrado com sucesso! :D')
+        NavigationService.navigate('Home')
         console.log("Response: ", response);
         const status = response.status
     }

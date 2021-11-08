@@ -5,6 +5,7 @@ import {
     TextInput,
     TouchableOpacity,
     Text,
+    Alert,
 } from 'react-native';
 
 import { styles } from './styles';
@@ -30,6 +31,10 @@ const Login = (): JSX.Element => {
                 mail: userEmail,
                 password: password,
             });
+            if (userEmail == ""  || password == "") {
+                Alert.alert('Campo obrigatório vazio, favor verificar!')
+                return
+            }
             console.log("Response: ", response);
             context.actions.setToken(response.data?.token)
         }
