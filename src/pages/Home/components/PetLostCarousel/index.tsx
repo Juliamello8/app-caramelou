@@ -1,18 +1,40 @@
-import React from 'react';
-import { View, Text, Image, TouchableOpacity } from 'react-native';
+import React, { useContext, useEffect, useState } from 'react';
+import { View, Text, Image, TouchableOpacity, ImageSourcePropType } from 'react-native';
 
 import NavigationService from '~/services/NavigationService';
 
-import Lost1 from "~/assets/lost1.png";
 import Lost2 from "~/assets/lost2.png";
-import Lost3 from "~/assets/lost3.png";
 
 import { styles } from './styles';
+import { AppContext } from '~/contexts/auth';
+import api from '~/services/api';
 
 const PetLostCarousel = (): JSX.Element => {
+    const context = useContext(AppContext);
+
     function onPressAllLost() {
         NavigationService.navigate('PetLost');
     }
+
+    useEffect(()=> {
+        api.setHeaders({Authorization: `Bearer ${context.store.token}`})
+        getPetLost()
+    },[])
+
+    const getPetLost = async () => {
+        const lostsData = await api.get('/lostPet')
+        if(lostsData.ok){
+            context.actions.setPetsLost(lostsData.data)
+            console.log("LostsData:", lostsData.data)
+        } 
+    }
+
+    context.petLost.map((pet:any) => {
+        console.log("pet.name: ",pet.name);
+
+        return pet;
+    });
+
     return (
         <View style={styles.containerPetLost}>
             <View style={styles.petLostHeaderHome}>
@@ -26,15 +48,7 @@ const PetLostCarousel = (): JSX.Element => {
             </View>
             <View style={styles.carrousselPetLost}>
                 <Image
-                    source={Lost1}
-                    style={styles.petLost}
-                />
-                <Image
                     source={Lost2}
-                    style={styles.petLost}
-                />
-                <Image
-                    source={Lost3}
                     style={styles.petLost}
                 />
             </View>
