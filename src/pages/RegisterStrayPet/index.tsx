@@ -24,20 +24,22 @@ const RegisterStrayPet = (): JSX.Element => {
     const [descriptionPet, setDescriptionPet] = useState('');
 
     const sendRegister = async () => {
-        const response = await api.post('/strayPet', {
-            type: typePet,
-            location: adressPet,
-            date: dateFind,
-            description: descriptionPet,
-        });
         if (typePet == ""  || adressPet == ""  || dateFind == ""  || hourFind == ""  || descriptionPet == "" ) {
             Alert.alert('Campo obrigatório vazio, favor verificar!')
             return
+        } else {
+            const response = await api.post('/strayPet', {
+                type: typePet,
+                location: adressPet,
+                date: dateFind,
+                description: descriptionPet,
+            });
+            Alert.alert('Registrado com sucesso! :D')
+            NavigationService.navigate('Home')
+            console.log("Response: ", response);
+            const status = response.status
         }
-        Alert.alert('Registrado com sucesso! :D')
-        NavigationService.navigate('Home')
-        console.log("Response: ", response);
-        const status = response.status
+        
     }
 
     return (

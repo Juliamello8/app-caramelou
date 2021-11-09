@@ -21,18 +21,20 @@ const RegisterHelp = (): JSX.Element => {
     })
 
     const sendRegister = async () => {
-        const response = await api.post('/requestHelp', {
-            user: nameUser,
-            title: titleHelp,
-            description: descriptionHelp,
-        });
         if (/*nameUser == "" || */ titleHelp == ""  || descriptionHelp == "") {
             Alert.alert('Campo obrigatório vazio, favor verificar!')
             return
+        } else {
+
+            const response = await api.post('/requestHelp', {
+                user: nameUser,
+                title: titleHelp,
+                description: descriptionHelp,
+            });
+            Alert.alert('Registrado com sucesso! :D')
+            NavigationService.navigate('Home')
+            const status = response.status
         }
-        Alert.alert('Registrado com sucesso! :D')
-        NavigationService.navigate('Home')
-        const status = response.status
     }  
 
     return (

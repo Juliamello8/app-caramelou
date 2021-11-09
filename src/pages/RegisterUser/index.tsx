@@ -50,32 +50,34 @@ const RegisterUser = (): JSX.Element => {
       }
 
     const sendRegisterUser = async () => {
-        const response = await api.post('/user', {
-            name: userName,
-            mail: userEmail,
-            password: password,
-            adress: userAdress,
-            number: adressNumber,
-            state: stateUser,
-            zip: zipCode,
-            phone: phoneNumber,
-            birthDate: btdayUser,
-            cpf: cpfUser,
-            image: imageUser,
-        });
         if (userName == ""  || userEmail == ""  || password == ""  || userAdress == ""  || adressNumber == "" || stateUser == "" ||
         zipCode == "" || phoneNumber == "" || btdayUser == "" || cpfUser == "" /*|| imageUser == ""*/) {
             //Lembrar de verificar Imagem se entra como string vazia caso não coloquem imagem
             Alert.alert('Campo obrigatório vazio, favor verificar!')
             return
-        }
-        console.log("Response: ", response);
-        if(response.status === 200) {
-            Alert.alert("Cadastro efetuado com sucesso!");
-            NavigationService.navigate('Login')
         } else {
-            Alert.alert("Erro de cadastro!")
-        }
+            const response = await api.post('/user', {
+                name: userName,
+                mail: userEmail,
+                password: password,
+                adress: userAdress,
+                number: adressNumber,
+                state: stateUser,
+                zip: zipCode,
+                phone: phoneNumber,
+                birthDate: btdayUser,
+                cpf: cpfUser,
+                image: imageUser,
+            });
+            console.log("Response: ", response);
+            if(response.status === 200) {
+                Alert.alert("Cadastro efetuado com sucesso!");
+                NavigationService.navigate('Login')
+            } else {
+                Alert.alert("Erro de cadastro!")
+            }
+        }    
+        
     }
 
     return (
