@@ -16,6 +16,7 @@ import api from "~/services/api";
 import { AppContext } from "~/contexts/auth";
 
 const ProfileSettings = (): JSX.Element => {
+  const context = useContext(AppContext);
   const [userData, setUserData] = useState('');
   const authContext = useContext(AppContext);
 
@@ -25,7 +26,7 @@ const ProfileSettings = (): JSX.Element => {
 
   function excludeUser(){
     Alert.alert("Conta excluída!")
-    api.delete('/users/1')
+    api.delete(`/users/${context.user?.id}`)
     NavigationService.navigate('Login')
 
   }
@@ -49,7 +50,6 @@ const ProfileSettings = (): JSX.Element => {
 
   function logoutUser(){
     Alert.alert('Até mais! :) ')
-    // NavigationService.navigate('Login')
     authContext.actions.signOut();
   }
 
