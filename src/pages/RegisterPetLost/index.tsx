@@ -24,21 +24,22 @@ const RegisterPetLost = (): JSX.Element => {
     const [lastLocation, setLastLocation] = useState('');
 
     const sendRegister = async () => {
-        const response = await api.post('/LostPet', {
-            name: namePet,
-            type: typePet,
-            lastSee: lastLocation,
-            date: dateLost,
-            description: descriptionPet,
-            breed: breedPet,
-        });
         if (namePet == ""  || typePet == ""  || lastLocation == ""  || dateLost == ""  || descriptionPet == "" || breedPet == "") {
             Alert.alert('Campo obrigatório vazio, favor verificar!')
             return
+        } else {
+            const response = await api.post('/LostPet', {
+                name: namePet,
+                type: typePet,
+                lastSee: lastLocation,
+                date: dateLost,
+                description: descriptionPet,
+                breed: breedPet,
+            });
+            Alert.alert('Registrado com sucesso! :D')
+            NavigationService.navigate('Home')
+            console.log("Response: ", response);
         }
-        Alert.alert('Registrado com sucesso! :D')
-        NavigationService.navigate('Home')
-        console.log("Response: ", response);
     }
 
     return (

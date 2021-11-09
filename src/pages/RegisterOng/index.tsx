@@ -12,18 +12,19 @@ const RegisterOng = (): JSX.Element => {
     const [cnpjONG, setCnpjONG] = useState('');
 
     const sendRegister = async () => {
-        const response = await api.post('/ongPet', {
-            name: nameONG,
-            cnpj: cnpjONG,
-        });
         if (nameONG == ""  || cnpjONG == "") {
             Alert.alert('Campo obrigatório vazio, favor verificar!')
             return
-        }
-        Alert.alert('Registrado com sucesso! :D')
-        NavigationService.navigate('Home')
-        console.log("Response: ", response);
-        const status = response.status
+        } else {
+            const response = await api.post('/ongPet', {
+                name: nameONG,
+                CNPJ: cnpjONG,
+            });
+            Alert.alert('Registrado com sucesso! :D')
+            NavigationService.navigate('Home')
+            console.log("Response: ", response);
+            const status = response.status
+        } 
     }
 
     return (
