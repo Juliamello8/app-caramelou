@@ -47,10 +47,21 @@ const PetLostCarousel = (): JSX.Element => {
                 </TouchableOpacity>
             </View>
             <View style={styles.carrousselPetLost}>
-                <Image
+
+            {
+                context.petLost.map((pet:any) =>
+                    <div >
+                        <img src={pet.image} />
+                        <p>{pet.name}</p>
+                        <p>{pet.id}</p>
+                        <p>{pet.breed}</p>
+                    </div>
+                )
+            }
+                {/* <Image
                     source={Lost2}
                     style={styles.petLost}
-                />
+                /> */}
             </View>
         </ View>
     )
