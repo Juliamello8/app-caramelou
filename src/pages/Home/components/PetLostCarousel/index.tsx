@@ -22,7 +22,7 @@ const PetLostCarousel = (): JSX.Element => {
     },[])
 
     const getPetLost = async () => {
-        const lostsData = await api.get('/lostPet')
+        const lostsData = await api.get('/strayPet')
         if(lostsData.ok){
             context.actions.setPetsLost(lostsData.data)
             console.log("LostsData:", lostsData.data)
@@ -50,12 +50,12 @@ const PetLostCarousel = (): JSX.Element => {
 
             {
                 context.petLost.map((pet:any) =>
-                    <div >
-                        <img src={pet.image} />
-                        <p>{pet.name}</p>
-                        <p>{pet.id}</p>
-                        <p>{pet.breed}</p>
-                    </div>
+                    <View key={pet.id}>
+                        <Image
+                        source={{ uri: `data:image/png;base64,${pet.image}`}}
+                        style={styles.petLost}
+                        />
+                    </View>
                 )
             }
                 {/* <Image

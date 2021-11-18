@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { View, ScrollView, TextInput, Text, TouchableOpacity, Alert, PanResponder } from 'react-native';
 import Footer from '~/components/Footer';
+import * as ImagePicker from 'expo-image-picker';
 
 import { styles } from './styles';
 
@@ -22,6 +23,21 @@ const RegisterStrayPet = (): JSX.Element => {
     const [dateFind, setDateFind] = useState('');
     const [hourFind, setHourFind] = useState('');
     const [descriptionPet, setDescriptionPet] = useState('');
+    const [imageStray, setImageStray] = useState('');
+
+    let openImagePickerAsync = async () => {
+        let permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
+        
+        if (permissionResult.granted === false) {
+          alert("Permissão de acesso ao rolo da camera é neceesário!");
+          return;
+        }
+    
+        let pickerResult = await ImagePicker.launchImageLibraryAsync({base64:true});
+        // @ts-ignore
+        setImageStray(pickerResult.base64)
+        console.log(pickerResult);
+      }
 
     const sendRegister = async () => {
         if (typePet == ""  || adressPet == ""  || dateFind == ""  || hourFind == ""  || descriptionPet == "" ) {
@@ -33,7 +49,9 @@ const RegisterStrayPet = (): JSX.Element => {
                 location: adressPet,
                 date: dateFind,
                 description: descriptionPet,
-            });
+                image: imageStray
+            },{maxContentLength: Infinity,
+                maxBodyLength: Infinity});
             Alert.alert('Registrado com sucesso! :D')
             NavigationService.navigate('Home')
             console.log("Response: ", response);
@@ -92,6 +110,7 @@ const RegisterStrayPet = (): JSX.Element => {
 
                     <TouchableOpacity
                         accessibilityLabel="Botão anexar foto animal de rua"
+                        onPress={openImagePickerAsync}
                     >
                         <Text style={styles.attPhoto}>Anexar foto do animal</Text>
                     </TouchableOpacity>
