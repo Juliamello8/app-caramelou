@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { View, ScrollView, TextInput, Text, TouchableOpacity, Alert } from 'react-native';
 import Footer from '~/components/Footer';
+import * as ImagePicker from 'expo-image-picker';
 
 import { styles } from './styles';
 
@@ -22,6 +23,21 @@ const RegisterPetLost = (): JSX.Element => {
     const [breedPet, setBreedPet] = useState(''); //raça
     const [descriptionPet, setDescriptionPet] = useState('');
     const [lastLocation, setLastLocation] = useState('');
+    const [imageLost, setImageLost] = useState('');
+
+    let openImagePickerAsync = async () => {
+        let permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
+        
+        if (permissionResult.granted === false) {
+          alert("Permissão de acesso ao rolo da camera é neceesário!");
+          return;
+        }
+    
+        let pickerResult = await ImagePicker.launchImageLibraryAsync({base64:true});
+        // @ts-ignore
+        setImageLost(pickerResult.base64)
+        console.log(pickerResult);
+      }
 
     const sendRegister = async () => {
         if (namePet == ""  || typePet == ""  || lastLocation == ""  || dateLost == ""  || descriptionPet == "" || breedPet == "") {
@@ -35,7 +51,9 @@ const RegisterPetLost = (): JSX.Element => {
                 date: dateLost,
                 description: descriptionPet,
                 breed: breedPet,
-            });
+                image: imageLost
+            },{maxContentLength: Infinity,
+                maxBodyLength: Infinity});
             Alert.alert('Registrado com sucesso! :D')
             NavigationService.navigate('Home')
             console.log("Response: ", response);
@@ -97,6 +115,7 @@ const RegisterPetLost = (): JSX.Element => {
                     />
                     <TouchableOpacity
                         accessibilityLabel="Botão para anexar foto do animal perdido"
+                        onPress={openImagePickerAsync}
                     >
                         <Text style={styles.attPhoto}>Anexar foto do animal</Text>
                     </TouchableOpacity>

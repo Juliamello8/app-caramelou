@@ -23,7 +23,7 @@ const StrayPetCarousel = (): JSX.Element => {
     const getStrayPet = async () => {
         const straysData = await api.get('/strayPet')
         if(straysData.ok){
-            context.actions.setStrayPet(straysData.data)
+            context.actions.setStraysPet(straysData.data)
             console.log("StraysData:", straysData.data)
         } 
     }
