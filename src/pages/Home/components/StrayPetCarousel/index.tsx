@@ -5,9 +5,6 @@ import NavigationService from '~/services/NavigationService';
 
 import { styles } from './styles';
 
-import stray1 from "~/assets/stray1.png";
-import stray2 from "~/assets/stray2.png";
-import stray3 from "~/assets/stray3.png";
 import api from '~/services/api';
 import { AppContext } from '~/contexts/auth';
 
@@ -21,12 +18,6 @@ const StrayPetCarousel = (): JSX.Element => {
     useEffect(()=> {
         api.setHeaders({Authorization: `Bearer ${context.store.token}`})
         getStrayPet()
-
-        const dataStray = context.strayPet.map((pet:any) => {
-            console.log("pet.name: ",pet.name);
-    
-            return pet;
-        });
     },[])
 
     const getStrayPet = async () => {
@@ -36,6 +27,12 @@ const StrayPetCarousel = (): JSX.Element => {
             console.log("StraysData:", straysData.data)
         } 
     }
+
+    context.strayPet.map((pet:any) => {
+        console.log("pet.name: ",pet.name);
+
+        return pet;
+    });
 
     return (
         <View style={styles.containerStrayPet}>
@@ -50,7 +47,7 @@ const StrayPetCarousel = (): JSX.Element => {
             </View>
             <View style={styles.carrousselStrayPet}>
             {
-                context.dataStray.map((pet:any) =>
+                context.strayPet.map((pet:any) =>
                     <View key={pet.id}>
                         <Image
                         source={{ uri: `data:image/png;base64,${pet.image}`}}
@@ -66,6 +63,3 @@ const StrayPetCarousel = (): JSX.Element => {
 
 export default StrayPetCarousel;
 
-function componentWillUpdate(nextProps: any, nextState: any): string | number | boolean | {} | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactNodeArray | React.ReactPortal | null | undefined {
-    throw new Error('Function not implemented.');
-}

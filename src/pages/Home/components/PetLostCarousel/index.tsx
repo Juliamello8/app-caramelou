@@ -1,9 +1,7 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { View, Text, Image, TouchableOpacity, ImageSourcePropType } from 'react-native';
+import React, { useContext, useEffect } from 'react';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
 
 import NavigationService from '~/services/NavigationService';
-
-import Lost2 from "~/assets/lost2.png";
 
 import { styles } from './styles';
 import { AppContext } from '~/contexts/auth';
@@ -47,7 +45,6 @@ const PetLostCarousel = (): JSX.Element => {
                 </TouchableOpacity>
             </View>
             <View style={styles.carrousselPetLost}>
-
             {
                 context.petLost.map((pet:any) =>
                     <View key={pet.id}>
@@ -58,10 +55,6 @@ const PetLostCarousel = (): JSX.Element => {
                     </View>
                 )
             }
-                {/* <Image
-                    source={Lost2}
-                    style={styles.petLost}
-                /> */}
             </View>
         </ View>
     )

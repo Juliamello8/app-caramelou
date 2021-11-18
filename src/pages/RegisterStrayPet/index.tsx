@@ -13,7 +13,6 @@ interface StrayPetProps {
     values: Login;
 }
 
-// import NavigationService from '~/services/NavigationService';
 import api from '~/services/api';
 import NavigationService from '~/services/NavigationService';
 
@@ -54,6 +53,7 @@ const RegisterStrayPet = (): JSX.Element => {
                 maxBodyLength: Infinity});
             Alert.alert('Registrado com sucesso! :D')
             NavigationService.navigate('Home')
+            NavigationService.goBack()
             console.log("Response: ", response);
             const status = response.status
         }
@@ -119,7 +119,6 @@ const RegisterStrayPet = (): JSX.Element => {
                     <TouchableOpacity
                         accessibilityLabel="Botão para finalizar cadastro do animal abandonado"
                         style={styles.registerButton}
-                        // onPress={() => NavigationService.navigate('StrayPet')}
                         onPress={sendRegister}
                     >
                         <Text style={styles.registerButtonText}>registrar abandono</Text>
@@ -127,7 +126,7 @@ const RegisterStrayPet = (): JSX.Element => {
                     <TouchableOpacity
                         accessibilityLabel="Botão para cancelar cadastro do animal abandonado"
                         style={styles.cancelButton}
-                        onPress={() => NavigationService.navigate('Home')}
+                        onPress={() => NavigationService.goBack()}
                     >
                         <Text style={styles.cancelButtonText}>cancelar</Text>
                     </TouchableOpacity>

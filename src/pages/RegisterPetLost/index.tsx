@@ -112,7 +112,7 @@ const RegisterPetLost = (): JSX.Element => {
                     <TouchableOpacity
                         accessibilityLabel="Botão para cancelar cadastro do animal perdido"
                         style={styles.cancelButton}
-                        onPress={() => NavigationService.navigate('Home')}
+                        onPress={() => NavigationService.goBack()}
                     >
                         <Text style={styles.cancelButtonText}>cancelar</Text>
                     </TouchableOpacity>
