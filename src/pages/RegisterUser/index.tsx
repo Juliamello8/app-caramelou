@@ -44,9 +44,10 @@ const RegisterUser = (): JSX.Element => {
           return;
         }
     
-        let pickerResult = await ImagePicker.launchImageLibraryAsync();
+        let pickerResult = await ImagePicker.launchImageLibraryAsync({base64:true});
+        // @ts-ignore
+        setImageUser(pickerResult.base64)
         console.log(pickerResult);
-        //setImageUser(console.log(pickerResult.cancelled))
       }
 
     const sendRegisterUser = async () => {
@@ -68,7 +69,8 @@ const RegisterUser = (): JSX.Element => {
                 birthDate: btdayUser,
                 cpf: cpfUser,
                 image: imageUser,
-            });
+            },{maxContentLength: Infinity,
+            maxBodyLength: Infinity});
             console.log("Response: ", response);
             if(response.status === 200) {
                 Alert.alert("Cadastro efetuado com sucesso!");
