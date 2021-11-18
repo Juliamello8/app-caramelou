@@ -28,7 +28,7 @@ const RegisterPetLost = (): JSX.Element => {
             Alert.alert('Campo obrigatório vazio, favor verificar!')
             return
         } else {
-            const response = await api.post('/LostPet', {
+            const response = await api.post('/lostPet', {
                 name: namePet,
                 type: typePet,
                 lastSee: lastLocation,
