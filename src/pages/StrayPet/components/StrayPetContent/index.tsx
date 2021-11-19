@@ -4,13 +4,11 @@ import { MaterialIcons } from '@expo/vector-icons'
 
 import { styles } from './styles';
 
-import strayBig1 from "~/assets/strayBig1.png";
 import api from '~/services/api';
 import NavigationService from '~/services/NavigationService';
 import { AppContext } from '~/contexts/auth';
 
 const StrayPetContent = (): JSX.Element => {
-
     const context = useContext(AppContext);
 
     useEffect(()=> {
@@ -21,36 +19,39 @@ const StrayPetContent = (): JSX.Element => {
     const getStrayPet = async () => {
         const straysData = await api.get('/strayPet')
         if(straysData.ok){
-            context.actions.setStrayPet(straysData.data)
+            context.actions.setStraysPet(straysData.data)
+            console.log("StraysData:", straysData.data)
         } 
     }
 
-    context.strayPet.map((pet:any) => {
-        return pet;
-    });
+    context.strayPet.map((pet:any) => { 
+        return pet
+    })
 
     return (
         <View style={styles.contentsStrayPet}>
             {
-                context.strayPet.map((pet:any) => {
-                    <>
+                context.strayPet.map((pet:any) =>
+                    <View key={pet.id}>
                         <Image
-                            source={pet.image}
-                            style={styles.imgStrayBig}
+                        source={{ uri: `data:image/png;base64,${pet.image}`}}
+                        style={styles.imgStrayBig}
                         />
-                        <View style={styles.containerLocation} key={pet.id}>
+                        <View style={styles.containerLocation}>
                             <MaterialIcons name="location-on" color="#CE4A00" size={25}/>
                             <Text style={styles.locationPet}>
                                 {pet.location}
                             </Text>
                         </View>
                         <View style={styles.viewAdopted}>
-                            <Text style={styles.descriptionPet}>
-                                {pet.date}
-                            </Text>
-                            <Text style={styles.descriptionPet}>
-                                {pet.description}
-                            </Text>
+                            <View>
+                                <Text style={styles.descriptionPet}>
+                                    {pet.date}
+                                </Text>
+                                <Text style={styles.descriptionPet}>
+                                    {pet.description}
+                                </Text>
+                            </View>
                             <TouchableOpacity
                                 style={styles.buttonAdopted}
                                 onPress={()=>{NavigationService.navigate('RegisterAdopted')}}
@@ -58,11 +59,13 @@ const StrayPetContent = (): JSX.Element => {
                                 <Text style={styles.textButtonAdopted}>adotei</Text>
                             </TouchableOpacity>
                         </View>
-                    </>
-                })
-            };
+                    </View>
+                )
+            }
+            
         </View>
+
     )
-};
+}
 
 export default StrayPetContent;

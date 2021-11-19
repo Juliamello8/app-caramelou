@@ -36,7 +36,7 @@ export const ContextWrapper: React.FC = (props) =>  {
 		setToken: (token:string) => setStore({ ...store, token }),
 		setCurrentUser: (newUser:any) => setUser(newUser),
 		setPetsLost: (newPetLost:PetLostInterface[]) => setPetLost(newPetLost),
-		setStrayPet: (newStrayPet:StrayPetInterface[]) => setStrayPet(newStrayPet),
+		setStraysPet: (newStrayPet:StrayPetInterface[]) => setStrayPet(newStrayPet),
 		signOut: () => setStore({ ...store, token: '' }),
 		setHelp: (helpApproved:boolean) => setStore({...store, helpApproved }),
 	});

@@ -37,6 +37,10 @@ import PendingOngs from './src/pages/PendingOngs'
 import PendingHelpRequests from './src/pages/PendingHelpRequests'
 import ListOngs from './src/pages/ListOngs'
 import RegisterAdopted from './src/pages/RegisterAdopted'
+import MyPosts from './src/pages/MyPosts'
+import MyLostPet from './src/pages/MyLostPet'
+import MyHelpRequests from './src/pages/MyHelpRequests'
+import MyOng from './src/pages/MyOng'
 
 //NAVEGATION
 import 'react-native-gesture-handler';
@@ -90,7 +94,7 @@ const App = (): JSX.Element => {
                 ? NavigationService.navigate("Login")
                 : NavigationService.navigate("Home")}
             >
-              <MaterialIcons name="arrow-back" size={25} color="#fff" style={{paddingLeft: 25}} />
+              <MaterialIcons name="arrow-back" size={24} color="#fff" style={{paddingLeft: 25}} />
             </TouchableOpacity>
           )
         }}
@@ -193,6 +197,34 @@ const App = (): JSX.Element => {
           component={RegisterAdopted}
           options={{
             title: "Adoteei <3"
+          }}
+        />
+        <Stack.Screen
+          name="MyPosts"
+          component={MyPosts}
+          options={{
+            title: "Minhas Publicações"
+          }}
+        />
+        <Stack.Screen
+          name="MyLostPet"
+          component={MyLostPet}
+          options={{
+            title: "Meu Animal Perdido"
+          }}
+        />
+        <Stack.Screen
+          name="MyHelpRequests"
+          component={MyHelpRequests}
+          options={{
+            title: "Meus Pedidos de Ajuda"
+          }}
+        />
+        <Stack.Screen
+          name="MyOng"
+          component={MyOng}
+          options={{
+            title: "Minha ONG"
           }}
         />
         </Stack.Navigator>

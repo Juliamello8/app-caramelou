@@ -23,14 +23,12 @@ const StrayPetCarousel = (): JSX.Element => {
     const getStrayPet = async () => {
         const straysData = await api.get('/strayPet')
         if(straysData.ok){
-            context.actions.setStrayPet(straysData.data)
+            context.actions.setStraysPet(straysData.data)
             console.log("StraysData:", straysData.data)
         } 
     }
 
     context.strayPet.map((pet:any) => {
-        console.log("pet.name: ",pet.name);
-
         return pet;
     });
 

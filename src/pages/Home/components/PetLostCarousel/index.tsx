@@ -20,7 +20,7 @@ const PetLostCarousel = (): JSX.Element => {
     },[])
 
     const getPetLost = async () => {
-        const lostsData = await api.get('/petPet')
+        const lostsData = await api.get('/lostPet')
         if(lostsData.ok){
             context.actions.setPetsLost(lostsData.data)
             console.log("LostsData:", lostsData.data)
@@ -28,7 +28,6 @@ const PetLostCarousel = (): JSX.Element => {
     }
 
     context.petLost.map((pet:any) => {
-        console.log("pet.name: ",pet.name);
 
         return pet;
     });
