@@ -127,8 +127,8 @@ const ProfileSettings = (): JSX.Element => {
             style={styles.viewButtonsSettings}
             onPress={() => NavigationService.navigate('ListOngs')}
           >
-            <MaterialIcons name="domain" color="#4F4F4F" size={24} />
-            <Text style={styles.textButtonsSettings}>Parceiros</Text>
+            <MaterialIcons name="stars" color="#4F4F4F" size={24} />
+            <Text style={styles.textButtonsSettings}>Lista de Parceiros</Text>
           </TouchableOpacity>
           <TouchableOpacity
             accessibilityLabel="Botão para fazer logoff"
