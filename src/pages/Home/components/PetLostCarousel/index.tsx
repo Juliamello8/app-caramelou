@@ -24,7 +24,6 @@ const PetLostCarousel = (): JSX.Element => {
     }
 
     context.petLost.map((pet:any) => {
-        console.log("pet.name: ",pet.name);
 
         return pet;
     });

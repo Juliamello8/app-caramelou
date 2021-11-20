@@ -28,41 +28,37 @@ const PetLostContent = (): JSX.Element => {
     });
 
     return (
-        <View style={styles.contentsPetLost}>  
-            {
-                context.petLost.map((pet:any) => {
-                    <View key={pet.id}>
-                        {console.log("Dentro do return: ", pet.name)}
-                        <Text>aaaaaaaa {pet.name}</Text>
-                    </View>
-                    {/* <Image
+        <View style={styles.contentsPetLost}> 
+
+        {
+            context.petLost.map((pet:any) =>
+                <View key={pet.id}>
+                    <Image
                     source={{ uri: `data:image/png;base64,${pet.image}`}}
                     style={styles.imgLostBig}
-                    /> */}
-                    // <Text style={styles.textType}>
-                    //     Raça: {pet.breed} 
-                    // </Text>
-                    {/* <View style={styles.containerLocation}  >
+                    />
+                    <View style={styles.containerLocation} key={pet.id} >
                         <MaterialIcons name="location-on" color="#CE4A00" size={25}/>
                         <Text style={styles.locationPet}>
-                            pet.lastSee
+                            {pet.lastSee}
                         </Text>
-                        <Text style={styles.textName}>pet.name</Text>
                     </View>
-                    
+                    <Text style={styles.textName}>Nome: {pet.name}</Text>
                     <View style={styles.typeAndDate}>
                         <Text style={styles.textType}>
-                            Raça: pet.breed 
+                            Raça: {pet.breed} 
                         </Text>
                         <Text style={styles.textDate}>
-                            Data: pet.date 
+                            Data: {pet.date} 
                         </Text>
                     </View>
                     <Text style={styles.descriptionPet}>
-                        pet.description
-                    </Text> */}
-                })
-            }   
+                        {pet.description}
+                    </Text>
+                </View>
+            )
+        }
+
         </View>
     )
 };

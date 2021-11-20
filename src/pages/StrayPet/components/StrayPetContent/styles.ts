@@ -16,11 +16,12 @@ export const styles = StyleSheet.create({
     locationPet: {
         fontSize: 18,
         color: '#4f4f4f',
+        paddingLeft: 15,
     },
     descriptionPet: {
         fontSize: 14,
         color: '#828282',
-        marginBottom: 20,
+        marginBottom: 10,
         width: '70%',
     },
     containerLocation: {
@@ -30,7 +31,7 @@ export const styles = StyleSheet.create({
     viewAdopted:{
         display: 'flex',
         flexDirection: 'row',
-        justifyContent: 'center',
+        justifyContent: 'space-between',
         margin: 15,
     },
     buttonAdopted: {

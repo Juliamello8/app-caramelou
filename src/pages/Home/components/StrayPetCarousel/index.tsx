@@ -29,8 +29,6 @@ const StrayPetCarousel = (): JSX.Element => {
     }
 
     context.strayPet.map((pet:any) => {
-        console.log("pet.name: ",pet.name);
-
         return pet;
     });
 

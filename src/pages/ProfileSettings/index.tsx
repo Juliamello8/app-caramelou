@@ -83,24 +83,37 @@ const ProfileSettings = (): JSX.Element => {
           <TouchableOpacity
             accessibilityLabel="Botão para listar minhas publicações"
             style={styles.viewButtonsSettings}
+            onPress={() =>  NavigationService.navigate('MyPosts')}
           >
             <MaterialIcons name="dynamic-feed" color="#4F4F4F" size={18} />
             <Text style={styles.textButtonsSettings}>Minhas Publicações</Text>
           </TouchableOpacity>
           <TouchableOpacity
-            accessibilityLabel="Botão para listar meus animais perdidos"
+            accessibilityLabel="Botão para listar meu animal perdido"
             style={styles.viewButtonsSettings}
+            onPress={() =>  NavigationService.navigate('MyLostPet')}
           >
             <MaterialIcons name="pets" color="#4F4F4F" size={18} />
-            <Text style={styles.textButtonsSettings}>Meus animais perdidos</Text>
+            <Text style={styles.textButtonsSettings}>Meu animal perdido</Text>
           </TouchableOpacity>
           <TouchableOpacity
             accessibilityLabel="Botão para listar meus pedidos de ajuda"
             style={styles.viewButtonsSettings}
+            onPress={() => NavigationService.navigate('MyHelpRequests')}
           >
             <MaterialIcons name="volunteer-activism" color="#4F4F4F" size={18} />
             <Text style={styles.textButtonsSettings}>Meus pedidos de ajuda</Text>
           </TouchableOpacity>
+          { /* SE TIVER CADASTRO */}
+          <TouchableOpacity
+            onPress={() =>  NavigationService.navigate('MyOng')}
+            accessibilityLabel="Botão para acessar dados da minha ONG"
+            style={styles.viewButtonsSettings}
+          >
+            <MaterialIcons name="domain" color="#4F4F4F" size={24} />
+            <Text style={styles.textButtonsSettings}>Minha ONG/Petshop</Text>
+          </TouchableOpacity>
+          { /* SE NÃO TIVER CADASTRO */}
           <TouchableOpacity
             accessibilityLabel="Botão para registrar minha ONG/Petshop"
             style={styles.viewButtonsSettings}
@@ -114,8 +127,8 @@ const ProfileSettings = (): JSX.Element => {
             style={styles.viewButtonsSettings}
             onPress={() => NavigationService.navigate('ListOngs')}
           >
-            <MaterialIcons name="domain" color="#4F4F4F" size={24} />
-            <Text style={styles.textButtonsSettings}>Parceiros</Text>
+            <MaterialIcons name="stars" color="#4F4F4F" size={24} />
+            <Text style={styles.textButtonsSettings}>Lista de Parceiros</Text>
           </TouchableOpacity>
           <TouchableOpacity
             accessibilityLabel="Botão para fazer logoff"
