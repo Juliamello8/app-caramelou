@@ -11,8 +11,6 @@ export const styles = StyleSheet.create({
   ongImg:{
     width: 123,
     height: 123,
-    objectFit: 'cover',
-    filter: 'drop-shadow(2px 2px 10px rgba(0, 0, 0, 0.15))',
     borderRadius: 100,
     marginBottom: 20,
   },

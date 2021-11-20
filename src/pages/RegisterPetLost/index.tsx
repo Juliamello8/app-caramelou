@@ -36,7 +36,6 @@ const RegisterPetLost = (): JSX.Element => {
         let pickerResult = await ImagePicker.launchImageLibraryAsync({base64:true});
         // @ts-ignore
         setImageLost(pickerResult.base64)
-        console.log(pickerResult);
       }
 
     const sendRegister = async () => {
@@ -72,7 +71,7 @@ const RegisterPetLost = (): JSX.Element => {
                         onChangeText={namePet => setNamePet(namePet)}
                         defaultValue={namePet}
                     />
-                    <Text style={styles.label}>Selecione o tipo do Animal:</Text>
+                    <Text style={styles.label}>Espécie do Animal:</Text>
                     <TextInput
                         style={styles.input}
                         placeholder='Ex.: Cachorro'
@@ -123,7 +122,6 @@ const RegisterPetLost = (): JSX.Element => {
                     <TouchableOpacity
                         accessibilityLabel="Botão para finalizar cadastro do animal perdido"
                         style={styles.registerButton}
-                        // onPress={() => NavigationService.navigate('PetLost')}
                         onPress={sendRegister}
                     >
                         <Text style={styles.registerButtonText}>registrar sumiço</Text>

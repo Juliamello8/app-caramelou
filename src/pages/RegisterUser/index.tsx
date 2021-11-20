@@ -24,6 +24,7 @@ import * as ImagePicker from 'expo-image-picker';
 
 const RegisterUser = (): JSX.Element => {
     const [userName, setUserName] = useState('');
+    const [userNick, setUserNick] = useState('');
     const [userEmail, setUserEmail] = useState('');
     const [userAdress, setUserAdress] = useState('');
     const [adressNumber, setAdressNumber] = useState('');
@@ -51,7 +52,7 @@ const RegisterUser = (): JSX.Element => {
       }
 
     const sendRegisterUser = async () => {
-        if (userName == ""  || userEmail == ""  || password == ""  || userAdress == ""  || adressNumber == "" || stateUser == "" ||
+        if (userName == ""  || userNick == ""  || userEmail == ""  || password == ""  || userAdress == ""  || adressNumber == "" || stateUser == "" ||
         zipCode == "" || phoneNumber == "" || btdayUser == "" || cpfUser == "" /*|| imageUser == ""*/) {
             //Lembrar de verificar Imagem se entra como string vazia caso não coloquem imagem
             Alert.alert('Campo obrigatório vazio, favor verificar!')
@@ -59,6 +60,7 @@ const RegisterUser = (): JSX.Element => {
         } else {
             const response = await api.post('/user', {
                 name: userName,
+                nickname: userNick,
                 mail: userEmail,
                 password: password,
                 adress: userAdress,
@@ -92,6 +94,13 @@ const RegisterUser = (): JSX.Element => {
                     placeholder='Ex.: João da Silva'
                     onChangeText={userName => setUserName(userName)}
                     defaultValue={userName}
+                />
+                <Text style={styles.label}>Apelido:</Text>
+                <TextInput
+                    style={styles.input}
+                    placeholder='Ex.: Joãozinho'
+                    onChangeText={userNick => setUserNick(userNick)}
+                    defaultValue={userNick}
                 />
                 <Text style={styles.label}>E-mail:</Text>
                 <TextInput

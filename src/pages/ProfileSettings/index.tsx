@@ -165,7 +165,7 @@ const ProfileSettings = (): JSX.Element => {
             <Text style={styles.textButtonsSettings}>Pedidos de ajuda pendentes</Text>
           </TouchableOpacity>
         </View>
-        <View>
+        {/* <View>
           <TouchableOpacity
             style={styles.buttonAddModerator}
             onPress={toggleUpdateDataUser}
@@ -173,7 +173,7 @@ const ProfileSettings = (): JSX.Element => {
           >
             <Text style={styles.textButtonAddModerator}>+ moderador</Text>
           </TouchableOpacity>
-        </View>
+        </View> */}
       </ScrollView>
       <Footer/>
     </>

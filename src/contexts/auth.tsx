@@ -28,21 +28,43 @@ export const ContextWrapper: React.FC = (props) =>  {
 		image?: string,
 	}
 
+	interface HelpRequestsInterface {
+		id: number,
+		title: string,
+		phone: string,
+		mail: string,
+		description: string,
+	}
+
+	interface OngPetInterface {
+		id: number,
+		owner: string,
+		name: string,
+		CNPJ: string,
+		mail: string,
+		phone: string,
+		image?: string,
+	}
+
 	const [user, setUser] = useState({name: 'Fulano test'})
 	const [petLost, setPetLost] = useState<PetLostInterface[]>([]);
 	const [strayPet, setStrayPet] = useState<StrayPetInterface[]>([]);
+	const [helpRequests, setHelpRequests] = useState<HelpRequestsInterface[]>([]);
+	const [ongPet, setOngPet] = useState<OngPetInterface[]>([])
 
 	const [ actions ] = useState({
 		setToken: (token:string) => setStore({ ...store, token }),
 		setCurrentUser: (newUser:any) => setUser(newUser),
 		setPetsLost: (newPetLost:PetLostInterface[]) => setPetLost(newPetLost),
 		setStraysPet: (newStrayPet:StrayPetInterface[]) => setStrayPet(newStrayPet),
+		setHelpRequests: (newHelpRequests:HelpRequestsInterface[]) => setHelpRequests(newHelpRequests),
 		signOut: () => setStore({ ...store, token: '' }),
 		setHelp: (helpApproved:boolean) => setStore({...store, helpApproved }),
+		setOngPet: (newOngPet:OngPetInterface[]) => setOngPet(newOngPet)
 	});
 	
 	return (
-		<AppContext.Provider value={{ store, actions, user, petLost, strayPet }}>
+		<AppContext.Provider value={{ store, actions, user, petLost, strayPet, helpRequests, ongPet }}>
 			{props.children}
 		</AppContext.Provider>
 	);

@@ -7,7 +7,7 @@ import NavigationService from "~/services/NavigationService";
 import api from "~/services/api";
 import { AppContext } from "~/contexts/auth";
 import MaterialIcons from "@expo/vector-icons/build/MaterialIcons";
-import { View, Image, Text, TouchableOpacity, } from "react-native";
+import { View, Image, Text, TouchableOpacity, Alert, } from "react-native";
 
 import lostpet1 from '~/assets/lost1.png'
 
@@ -15,31 +15,35 @@ const MyHelpRequests = (): JSX.Element => {
   const context = useContext(AppContext);
 
   useEffect(()=> {
-      api.setHeaders({Authorization: `Bearer ${context.store.token}`})
-      getPetLost()
-  },[])
+    api.setHeaders({Authorization: `Bearer ${context.store.token}`})
+    getHelpRequests()
+  },[]);
 
-  const getPetLost = async () => {
-      const lostsData = await api.get('/lostPet')
-      if(lostsData.ok){
-          context.actions.setPetsLost(lostsData.data)
-      } 
-  }
+  const getHelpRequests = async () => {
+    const requestsData = await api.get('/requestHelp')
+    if(requestsData.ok){
+        context.actions.setHelpRequests(requestsData.data)
+    } 
+  };
 
-  context.petLost.map((pet:any) => {
-      return pet;
-  });
+  context.helpRequests.map((help:any) => { 
+    return help
+  })
 
   function deleteHelp(){
-    
+    Alert.alert("Pedido de Ajuda Removido!")
+    api.delete(`/requestHelp/${context.strayPet.id}`)
   }
 
   return(
     <>
       <View style={styles.container}>
-        <View style={styles.viewContents}>
-          <Text style={styles.textTitle}>Título</Text>
-          <Text style={styles.textDescription}>Descrição</Text>
+        {
+          context.helpRequests.map((help:any) =>
+          <View key={help.id}>
+            <View style={styles.viewContents}>
+          <Text style={styles.textTitle}>{help.title}</Text>
+          <Text style={styles.textDescription}>{help.description}</Text>
         </View>
         <TouchableOpacity
           onPress={deleteHelp}
@@ -47,6 +51,8 @@ const MyHelpRequests = (): JSX.Element => {
           <MaterialIcons name="delete-outline" size={24} color="#EB5757" />
         </TouchableOpacity>
       </View>
+          )}
+          </View>
       <Footer/>
     </>
   )

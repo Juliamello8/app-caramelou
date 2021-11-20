@@ -47,6 +47,7 @@ const RegisterStrayPet = (): JSX.Element => {
                 type: typePet,
                 location: adressPet,
                 date: dateFind,
+                hour: hourFind,
                 description: descriptionPet,
                 image: imageStray
             },{maxContentLength: Infinity,
@@ -65,7 +66,7 @@ const RegisterStrayPet = (): JSX.Element => {
             <ScrollView style={styles.containerRegister}>
                 <View style={styles.contentsRegister}>
                     <Text style={styles.titleRegister}>Animal Abandonado</Text>
-                    <Text style={styles.label}>Selecione o tipo do Animal:</Text>
+                    <Text style={styles.label}>Espécie do Animal:</Text>
                     <TextInput
                         style={styles.input}
                         placeholder='Ex.: Cachorro'

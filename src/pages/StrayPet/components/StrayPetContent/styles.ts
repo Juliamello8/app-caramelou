@@ -16,13 +16,11 @@ export const styles = StyleSheet.create({
     locationPet: {
         fontSize: 18,
         color: '#4f4f4f',
-        paddingLeft: 15,
     },
     descriptionPet: {
         fontSize: 14,
         color: '#828282',
-        marginBottom: 10,
-        width: '70%',
+        marginBottom: 20,
     },
     containerLocation: {
         display: 'flex',
@@ -47,6 +45,21 @@ export const styles = StyleSheet.create({
         color: '#CE4A00',
         fontSize: 18,
         fontWeight: 'bold',
+        textAlign: 'center',
+    },
+    typeAndDate: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        paddingTop: 10,
+        paddingBottom: 10,
+    },
+    textType: {
+        color: '#4f4f4f',
+        textAlign: 'left',
+    },
+    textDate: {
+        color: '#4f4f4f',
         textAlign: 'center',
     },
 

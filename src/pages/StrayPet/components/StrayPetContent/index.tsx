@@ -7,6 +7,7 @@ import { styles } from './styles';
 import NavigationService from '~/services/NavigationService';
 import { AppContext } from '~/contexts/auth';
 import api from '~/services/api';
+import Footer from '~/components/Footer';
 
 const StrayPetContent = (): JSX.Element => {
     const context = useContext(AppContext);
@@ -30,43 +31,49 @@ const StrayPetContent = (): JSX.Element => {
 
     return (
         <View style={styles.contentsStrayPet}>
-            <Text>OOI</Text>
             {
                 context.strayPet.map((pet:any) =>
                     <View key={pet.id}>
                         <Image
-                        source={{ uri: `data:image/png;base64,${pet.image}`}}
-                        style={styles.imgStrayBig}
-                        />
-                        <View style={styles.containerLocation}>
-                            <MaterialIcons name="location-on" color="#CE4A00" size={25}/>
-                            <Text style={styles.locationPet}>
-                                {pet.location}
-                            </Text>
-                        </View>
+                    source={{ uri: `data:image/png;base64,${pet.image}`}}
+                    style={styles.imgStrayBig}
+                    />
+                    <View style={styles.containerLocation} key={pet.id} >
+                        <MaterialIcons name="location-on" color="#CE4A00" size={25}/>
+                        <Text style={styles.locationPet}>
+                            {pet.location}
+                        </Text>
+                    </View>
                         <View style={styles.viewAdopted}>
                             <View>
+                                <View style={styles.typeAndDate}>
+                                    <Text style={styles.textDate}>
+                                        Data: {pet.date}
+                                    </Text>
+                                    <Text style={styles.textType}>
+                                        Última vez visto às: {pet.hour}
+                                    </Text>
+                                </View>
                                 <Text style={styles.descriptionPet}>
-                                    {pet.date}
-                                </Text>
-                                <Text style={styles.descriptionPet}>
-                                    {pet.description}
+                                        {pet.description}
                                 </Text>
                             </View>
-                            <TouchableOpacity
+                        </View>
+                        <TouchableOpacity
                                 style={styles.buttonAdopted}
                                 onPress={()=>{NavigationService.navigate('RegisterAdopted')}}
-                            >
-                                <Text style={styles.textButtonAdopted}>adotei</Text>
-                            </TouchableOpacity>
-                        </View>
+                        >
+                            <Text style={styles.textButtonAdopted}>adotei</Text>
+                        </TouchableOpacity>
                     </View>
                 )
             }
             
         </View>
+        
 
     )
+    
 }
 
 export default StrayPetContent;

@@ -15,7 +15,6 @@ export const styles = StyleSheet.create({
   petImg:{
     width: 86,
     height: 76,
-    objectFit: 'cover',
     borderRadius: 10,
   },
   contents:{
