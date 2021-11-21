@@ -46,11 +46,22 @@ export const ContextWrapper: React.FC = (props) =>  {
 		image?: string,
 	}
 
+	interface PhotoWallInterface {
+		id: number,
+		name: string,
+		description: string,
+		userName: string,
+		image?: string,
+		userId: number,
+		date: string,
+	}
+
 	const [user, setUser] = useState({name: 'Fulano test'})
 	const [petLost, setPetLost] = useState<PetLostInterface[]>([]);
 	const [strayPet, setStrayPet] = useState<StrayPetInterface[]>([]);
 	const [helpRequests, setHelpRequests] = useState<HelpRequestsInterface[]>([]);
-	const [ongPet, setOngPet] = useState<OngPetInterface[]>([])
+	const [ongPet, setOngPet] = useState<OngPetInterface[]>([]);
+	const [photoWall, setPhotoWall] = useState<PhotoWallInterface[]>([]);
 
 	const [ actions ] = useState({
 		setToken: (token:string) => setStore({ ...store, token }),
@@ -60,11 +71,12 @@ export const ContextWrapper: React.FC = (props) =>  {
 		setHelpRequests: (newHelpRequests:HelpRequestsInterface[]) => setHelpRequests(newHelpRequests),
 		signOut: () => setStore({ ...store, token: '' }),
 		setHelp: (helpApproved:boolean) => setStore({...store, helpApproved }),
-		setOngPet: (newOngPet:OngPetInterface[]) => setOngPet(newOngPet)
+		setOngPet: (newOngPet:OngPetInterface[]) => setOngPet(newOngPet),
+		setPhotoWall: (newPhotoWall:PhotoWallInterface[])=> setPhotoWall(newPhotoWall),
 	});
 	
 	return (
-		<AppContext.Provider value={{ store, actions, user, petLost, strayPet, helpRequests, ongPet }}>
+		<AppContext.Provider value={{ store, actions, user, petLost, strayPet, helpRequests, ongPet, photoWall }}>
 			{props.children}
 		</AppContext.Provider>
 	);

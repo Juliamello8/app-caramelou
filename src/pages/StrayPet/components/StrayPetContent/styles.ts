@@ -1,11 +1,17 @@
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
+    containerRegister: {
+        width: '100%',
+    },
     contentsStrayPet: {
         width: '100%',
-        padding: 20,
         display: 'flex',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        borderRadius: 25,
+        paddingLeft: 20,
+        paddingRight: 20,
+        paddingBottom: 100,
     },
     imgStrayBig: {
         width: 360,

@@ -1,9 +1,13 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { View, ScrollView, TextInput, Text, TouchableOpacity, Alert, PanResponder } from 'react-native';
 import Footer from '~/components/Footer';
 import * as ImagePicker from 'expo-image-picker';
 
 import { styles } from './styles';
+
+import NavigationService from '~/services/NavigationService';
+import api from '~/services/api';
+import { AppContext } from '~/contexts/auth';
 
 type Login = {
     email: string;
@@ -13,10 +17,8 @@ interface StrayPetProps {
     values: Login;
 }
 
-import api from '~/services/api';
-import NavigationService from '~/services/NavigationService';
-
 const RegisterStrayPet = (): JSX.Element => {
+    const context = useContext(AppContext);
     const [typePet, setTypePet] = useState('');
     const [adressPet, setAdressPet] = useState('');
     const [dateFind, setDateFind] = useState('');
@@ -49,14 +51,13 @@ const RegisterStrayPet = (): JSX.Element => {
                 date: dateFind,
                 hour: hourFind,
                 description: descriptionPet,
-                image: imageStray
+                image: imageStray,
+                userId: context.user?.id,
             },{maxContentLength: Infinity,
                 maxBodyLength: Infinity});
             Alert.alert('Registrado com sucesso! :D')
             NavigationService.navigate('Home')
-            NavigationService.goBack()
             console.log("Response: ", response);
-            const status = response.status
         }
         
     }

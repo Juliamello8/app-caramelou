@@ -1,20 +1,27 @@
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
+  containerRegister: {
+    width: '100%',
+  },
   container:{
-    display: 'flex',
-    flexDirection: 'row',
     paddingVertical: 20,
     marginHorizontal: 20,
-    justifyContent: 'space-evenly',
+    display: 'flex',
     alignItems: 'center',
+    justifyContent: 'space-evenly',
     borderBottomColor: '#bdbdbd',
     borderBottomWidth: 1,
     borderStyle: 'solid'
   },
+  viewPhotoName:{
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center'
+  },
   petImg:{
-    width: 86,
-    height: 76,
+    width: 120,
+    height: 120,
     borderRadius: 10,
   },
   contents:{

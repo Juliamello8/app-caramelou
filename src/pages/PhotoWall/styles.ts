@@ -2,8 +2,9 @@ import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
   containerPhoto:{
-    width: '100%',
-    padding: 20,
+    width: 'auto',
+    paddingBottom : 100,
+    marginBottom: 80,
   },
   contentsPhoto: {
       margin: 20,

@@ -48,6 +48,7 @@ const RegisterOng = (): JSX.Element => {
                 image: imageONG,
                 phone: phoneONG,
                 mail: mailONG,
+                userId: context.user?.id,
             });
             Alert.alert('Registrado com sucesso! :D')
             NavigationService.navigate('Home')

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react'
-import { View, Image, Text } from 'react-native';
+import { View, Image, Text, ScrollView } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons'
 
 import { styles } from './styles';
@@ -28,38 +28,40 @@ const PetLostContent = (): JSX.Element => {
     });
 
     return (
-        <View style={styles.contentsPetLost}> 
-
-        {
-            context.petLost.map((pet:any) =>
-                <View key={pet.id}>
-                    <Image
-                    source={{ uri: `data:image/png;base64,${pet.image}`}}
-                    style={styles.imgLostBig}
-                    />
-                    <View style={styles.containerLocation} key={pet.id} >
-                        <MaterialIcons name="location-on" color="#CE4A00" size={25}/>
-                        <Text style={styles.locationPet}>
-                            {pet.lastSee}
+        <>
+        <ScrollView style={styles.containerRegister}>
+            <View style={styles.contentsPetLost}> 
+            {
+                context.petLost.map((pet:any) =>
+                    <View key={pet.id}>
+                        <Image
+                        source={{ uri: `data:image/png;base64,${pet.image}`}}
+                        style={styles.imgLostBig}
+                        />
+                        <View style={styles.containerLocation} key={pet.id} >
+                            <MaterialIcons name="location-on" color="#CE4A00" size={25}/>
+                            <Text style={styles.locationPet}>
+                                {pet.lastSee}
+                            </Text>
+                        </View>
+                        <Text style={styles.textName}>Nome: {pet.name}</Text>
+                        <View style={styles.typeAndDate}>
+                            <Text style={styles.textType}>
+                                Raça: {pet.breed} 
+                            </Text>
+                            <Text style={styles.textDate}>
+                                Data: {pet.date} 
+                            </Text>
+                        </View>
+                        <Text style={styles.descriptionPet}>
+                            {pet.description}
                         </Text>
                     </View>
-                    <Text style={styles.textName}>Nome: {pet.name}</Text>
-                    <View style={styles.typeAndDate}>
-                        <Text style={styles.textType}>
-                            Raça: {pet.breed} 
-                        </Text>
-                        <Text style={styles.textDate}>
-                            Data: {pet.date} 
-                        </Text>
-                    </View>
-                    <Text style={styles.descriptionPet}>
-                        {pet.description}
-                    </Text>
-                </View>
-            )
-        }
+                )}
 
-        </View>
+            </View>
+        </ScrollView>
+        </>
     )
 };
 

@@ -7,7 +7,7 @@ import NavigationService from "~/services/NavigationService";
 import api from "~/services/api";
 import { AppContext } from "~/contexts/auth";
 import MaterialIcons from "@expo/vector-icons/build/MaterialIcons";
-import { View, Image, Text, TouchableOpacity, } from "react-native";
+import { View, Image, Text, TouchableOpacity, Alert, } from "react-native";
 
 import lostpet1 from '~/assets/lost1.png'
 
@@ -32,7 +32,10 @@ const MyOng = (): JSX.Element => {
     })
 
   function deleteOng(){
-    
+    Alert.alert("Parceiro Removido!")
+    context.ongPet.map((ong:any) => { 
+      api.delete(`/ongPet/${ong.id}`)
+  })
   }
 
   return(

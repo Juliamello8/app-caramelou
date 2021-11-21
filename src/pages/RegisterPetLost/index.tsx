@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { View, ScrollView, TextInput, Text, TouchableOpacity, Alert } from 'react-native';
 import Footer from '~/components/Footer';
 import * as ImagePicker from 'expo-image-picker';
@@ -7,6 +7,7 @@ import { styles } from './styles';
 
 import NavigationService from '~/services/NavigationService';
 import api from '~/services/api';
+import { AppContext } from '~/contexts/auth';
 
 type Login = {
     email: string;
@@ -17,6 +18,7 @@ interface PetLostProps {
 }
 
 const RegisterPetLost = (): JSX.Element => {
+    const context = useContext(AppContext);
     const [namePet, setNamePet] = useState('');
     const [typePet, setTypePet] = useState('');
     const [dateLost, setDateLost] = useState('');
@@ -50,7 +52,8 @@ const RegisterPetLost = (): JSX.Element => {
                 date: dateLost,
                 description: descriptionPet,
                 breed: breedPet,
-                image: imageLost
+                image: imageLost,
+                userId: context.user?.id,
             },{maxContentLength: Infinity,
                 maxBodyLength: Infinity});
             Alert.alert('Registrado com sucesso! :D')

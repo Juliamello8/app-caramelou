@@ -32,7 +32,9 @@ const MyHelpRequests = (): JSX.Element => {
 
   function deleteHelp(){
     Alert.alert("Pedido de Ajuda Removido!")
-    api.delete(`/requestHelp/${context.strayPet.id}`)
+    context.helpRequests.map((help:any) => { 
+      api.delete(`/requestHelp/${help.id}`)
+    })
   }
 
   return(

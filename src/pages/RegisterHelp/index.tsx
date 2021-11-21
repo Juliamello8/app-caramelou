@@ -35,6 +35,7 @@ const RegisterHelp = (): JSX.Element => {
                 mail: mailHelp,
                 description: descriptionHelp,
                 time: new Date(),
+                userId: context.user?.id,
             });
             Alert.alert('Registrado com sucesso! :D')
             NavigationService.navigate('Home')

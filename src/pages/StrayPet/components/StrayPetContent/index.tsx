@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import { View, Image, Text, TouchableOpacity } from 'react-native';
+import { View, Image, Text, TouchableOpacity, ScrollView } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 
 
@@ -30,11 +30,13 @@ const StrayPetContent = (): JSX.Element => {
     })
 
     return (
-        <View style={styles.contentsStrayPet}>
-            {
-                context.strayPet.map((pet:any) =>
-                    <View key={pet.id}>
-                        <Image
+        <>
+        <ScrollView style={styles.containerRegister}>
+            <View style={styles.contentsStrayPet}>
+                {
+                    context.strayPet.map((pet:any) =>
+                        <View key={pet.id}>
+                    <Image
                     source={{ uri: `data:image/png;base64,${pet.image}`}}
                     style={styles.imgStrayBig}
                     />
@@ -44,36 +46,33 @@ const StrayPetContent = (): JSX.Element => {
                             {pet.location}
                         </Text>
                     </View>
-                        <View style={styles.viewAdopted}>
-                            <View>
-                                <View style={styles.typeAndDate}>
-                                    <Text style={styles.textDate}>
-                                        Data: {pet.date}
-                                    </Text>
-                                    <Text style={styles.textType}>
-                                        Última vez visto às: {pet.hour}
-                                    </Text>
-                                </View>
-                                <Text style={styles.descriptionPet}>
-                                        {pet.description}
+                    <View style={styles.viewAdopted}>
+                        <View>
+                            <View style={styles.typeAndDate}>
+                                <Text style={styles.textDate}>
+                                    Data: {pet.date}
+                                </Text>
+                                <Text style={styles.textType}>
+                                    Última vez visto às: {pet.hour}
                                 </Text>
                             </View>
-                        </View>
-                        <TouchableOpacity
+                            <Text style={styles.descriptionPet}>
+                                    {pet.description}
+                            </Text>
+                            <TouchableOpacity
                                 style={styles.buttonAdopted}
                                 onPress={()=>{NavigationService.navigate('RegisterAdopted')}}
-                        >
+                            >
                             <Text style={styles.textButtonAdopted}>adotei</Text>
-                        </TouchableOpacity>
+                            </TouchableOpacity>
+                        </View>
                     </View>
-                )
-            }
-            
-        </View>
-        
-
-    )
-    
+                </View>
+                )}
+            </View>
+        </ScrollView>
+        </>
+    )   
 }
 
 export default StrayPetContent;
