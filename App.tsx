@@ -103,7 +103,7 @@ const App = (): JSX.Element => {
           name="Home"
           component={Home}
           options={{
-            title: `Olá ${context.user?.name},`,
+            title: `Olá ${context.user?.nickname},`,
             headerLeft: () => <></>
           }}
         />

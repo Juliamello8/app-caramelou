@@ -7,12 +7,14 @@ import { styles } from './styles';
 import api from '~/services/api';
 import { AppContext } from '~/contexts/auth';
 import NavigationService from '~/services/NavigationService';
+import { getEnvironmentData } from 'worker_threads';
 
 const RegisterHelp = (): JSX.Element => {
     const context = useContext(AppContext);
-    const [nameUser, setNameUser] = useState('');
     const [titleHelp, setTitleHelp] = useState('');
     const [descriptionHelp, setDescriptionHelp] = useState('');
+    const [mailHelp, setMailHelp] = useState('');
+    const [phoneHelp, setPhoneHelp] = useState('');
 
 
     useEffect(()=>{
@@ -27,9 +29,13 @@ const RegisterHelp = (): JSX.Element => {
         } else {
 
             const response = await api.post('/requestHelp', {
-                user: nameUser,
+                user: context.user?.name,
                 title: titleHelp,
+                phone: phoneHelp,
+                mail: mailHelp,
                 description: descriptionHelp,
+                time: new Date(),
+                userId: context.user?.id,
             });
             Alert.alert('Registrado com sucesso! :D')
             NavigationService.navigate('Home')
@@ -45,10 +51,10 @@ const RegisterHelp = (): JSX.Element => {
                     <Text style={styles.label}>Pedido de ajuda para:</Text>
                     <TextInput
                         style={styles.input}
-                        placeholder={nameUser}
+                        placeholder={context.user?.name}
                         editable={false}
                         selectTextOnFocus={false}
-                        defaultValue={nameUser}
+                        defaultValue={context.user?.name}
                     />
                     <Text style={styles.label}>Título do pedido:</Text>
                     <TextInput
@@ -56,6 +62,20 @@ const RegisterHelp = (): JSX.Element => {
                         placeholder='Descreva em poucas palavras'
                         onChangeText={titleHelp => setTitleHelp(titleHelp)}
                         defaultValue={titleHelp}
+                    />
+                    <Text style={styles.label}>Telefone para Contato:</Text>
+                    <TextInput
+                        style={styles.input}
+                        placeholder='Ex: (41)99999-9999'
+                        onChangeText={phoneHelp => setPhoneHelp(phoneHelp)}
+                        defaultValue={phoneHelp}
+                    />
+                    <Text style={styles.label}>E-mail para Contato:</Text>
+                    <TextInput
+                        style={styles.input}
+                        placeholder='Ex: seuemail@email.com'
+                        onChangeText={mailHelp => setMailHelp(mailHelp)}
+                        defaultValue={mailHelp}
                     />
                     <Text style={styles.label}>Descrição do pedido:</Text>
                     <TextInput

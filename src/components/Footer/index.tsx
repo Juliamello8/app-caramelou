@@ -31,6 +31,11 @@ const Footer = (): JSX.Element => {
                 <MaterialIcons name="volunteer-activism" color="#CE4A00" size={30} />
             </TouchableOpacity>
             <TouchableOpacity
+                onPress={() => NavigationService.navigate('PhotoWall')}
+            >
+                <MaterialIcons name="photo-library" color="#CE4A00" size={30} />
+            </TouchableOpacity>
+            <TouchableOpacity
                 // onPress={() => {
                 //     Alert.alert("Poxa, volte logo! :( ", "Você realizou o logout e será redirecionado à tela de Login.", [{
                 //         onPress: () => NavigationService.navigate('Login')

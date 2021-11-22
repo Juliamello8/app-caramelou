@@ -1,11 +1,17 @@
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
+    containerRegister: {
+        width: '100%',
+    },
     contentsStrayPet: {
         width: '100%',
-        padding: 20,
         display: 'flex',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        borderRadius: 25,
+        paddingLeft: 20,
+        paddingRight: 20,
+        paddingBottom: 100,
     },
     imgStrayBig: {
         width: 360,
@@ -16,13 +22,11 @@ export const styles = StyleSheet.create({
     locationPet: {
         fontSize: 18,
         color: '#4f4f4f',
-        paddingLeft: 15,
     },
     descriptionPet: {
         fontSize: 14,
         color: '#828282',
-        marginBottom: 10,
-        width: '70%',
+        marginBottom: 20,
     },
     containerLocation: {
         display: 'flex',
@@ -47,6 +51,21 @@ export const styles = StyleSheet.create({
         color: '#CE4A00',
         fontSize: 18,
         fontWeight: 'bold',
+        textAlign: 'center',
+    },
+    typeAndDate: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        paddingTop: 10,
+        paddingBottom: 10,
+    },
+    textType: {
+        color: '#4f4f4f',
+        textAlign: 'left',
+    },
+    textDate: {
+        color: '#4f4f4f',
         textAlign: 'center',
     },
 

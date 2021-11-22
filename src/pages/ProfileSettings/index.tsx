@@ -25,10 +25,9 @@ const ProfileSettings = (): JSX.Element => {
   }
 
   function excludeUser(){
+    api.delete(`/user/${context.user?.id}`)
     Alert.alert("Conta excluída!")
-    api.delete(`/users/${context.user?.id}`)
     NavigationService.navigate('Login')
-
   }
   function excludeAlert(){
     Alert.alert(
@@ -73,12 +72,20 @@ const ProfileSettings = (): JSX.Element => {
     <>
       <ScrollView style={styles.settingsUsersConteiner}>
         <View style={styles.settingsUsersContents}>
-          <TouchableOpacity
+          {/* <TouchableOpacity
             style={styles.buttonUpdateData}
             onPress={toggleUpdateDataUser}
             accessibilityLabel="Botão para atualizar dados do usuário"
           >
             <Text style={styles.textButtonUpdateData}>atualizar dados</Text>
+          </TouchableOpacity> */}
+          <TouchableOpacity
+            accessibilityLabel="Botão para listar entrar no mural de fotos"
+            style={styles.viewButtonsSettings}
+            onPress={() =>  NavigationService.navigate('PhotoWall')}
+          >
+            <MaterialIcons name="camera-roll" color="#4F4F4F" size={18} />
+            <Text style={styles.textButtonsSettings}>Mural de Fotos</Text>
           </TouchableOpacity>
           <TouchableOpacity
             accessibilityLabel="Botão para listar minhas publicações"
@@ -165,7 +172,7 @@ const ProfileSettings = (): JSX.Element => {
             <Text style={styles.textButtonsSettings}>Pedidos de ajuda pendentes</Text>
           </TouchableOpacity>
         </View>
-        <View>
+        {/* <View>
           <TouchableOpacity
             style={styles.buttonAddModerator}
             onPress={toggleUpdateDataUser}
@@ -173,7 +180,7 @@ const ProfileSettings = (): JSX.Element => {
           >
             <Text style={styles.textButtonAddModerator}>+ moderador</Text>
           </TouchableOpacity>
-        </View>
+        </View> */}
       </ScrollView>
       <Footer/>
     </>

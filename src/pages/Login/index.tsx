@@ -42,7 +42,7 @@ const Login = (): JSX.Element => {
             return;
         }
         if(!response.data?.token){
-            Alert.alert('Usuario ou senha errados')
+            Alert.alert('Usuário ou senha incorretos')
             return;
         }
         context.actions.setToken(response.data?.token)

@@ -10,10 +10,6 @@ import api from '~/services/api';
 const PetLostCarousel = (): JSX.Element => {
     const context = useContext(AppContext);
 
-    function onPressAllLost() {
-        NavigationService.navigate('PetLost');
-    }
-
     useEffect(()=> {
         api.setHeaders({Authorization: `Bearer ${context.store.token}`})
         getPetLost()
@@ -37,7 +33,7 @@ const PetLostCarousel = (): JSX.Element => {
             <View style={styles.petLostHeaderHome}>
                 <Text style={styles.titlePetHome}>Animais Perdidos</Text>
                 <TouchableOpacity
-                    onPress={onPressAllLost}
+                    onPress={() => NavigationService.navigate('PetLost')}
                     accessibilityLabel="Botão para registro de animais de rua"
                 >
                     <Text style={styles.seeMore}>+ ver todos</Text>

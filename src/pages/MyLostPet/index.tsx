@@ -7,7 +7,7 @@ import NavigationService from "~/services/NavigationService";
 import api from "~/services/api";
 import { AppContext } from "~/contexts/auth";
 import MaterialIcons from "@expo/vector-icons/build/MaterialIcons";
-import { View, Image, Text, TouchableOpacity, } from "react-native";
+import { View, Image, Text, TouchableOpacity, Alert, ScrollView, } from "react-native";
 
 import lostpet1 from '~/assets/lost1.png'
 
@@ -31,37 +31,43 @@ const MyLostPet = (): JSX.Element => {
   });
 
   function deleteLostPet(){
-    
+    Alert.alert("Públicação Removida!")
+    context.petLost.map((pet:any) => {
+      api.delete(`/lostPet/${pet.id}`)
+    });   
   }
 
   return(
     <>
+    <ScrollView style={styles.containerRegister}>
       <View style={styles.container}>
-        <View style={styles.viewPhotoName}>
-          <Image
-            // source={{ uri: `data:image/png;base64,${pet.image}`}}
-            source={lostpet1}
-            style={styles.petImg}
-          />
-          <Text style={styles.textName}></Text>
-          <Text style={styles.textBreed}></Text>
-        </View>
-        <View style={styles.contents}>
-          <View style={styles.viewLocation}>
-            <MaterialIcons name="location-on" color="#CE4A00" size={25}/>
-              <Text style={styles.textLocationPet}>
-                  {/* {pet.location} */}
-                  ~ localização ~
-              </Text>
-          </View>
-          <Text style={styles.textLastSee}>Sumiu: </Text>
-          <Text style={styles.textDescription}> ~ descrição ~ </Text>
-        </View>
-        <TouchableOpacity onPress={deleteLostPet}>
-          <MaterialIcons name="delete-outline" size={24} color="#EB5757" />
-        </TouchableOpacity>
+        {
+          context.petLost.map((pet:any) =>
+            <View key={pet.id}>
+              <View style={styles.viewPhotoName}>
+                  <Image
+                    source={{ uri: `data:image/png;base64,${pet.image}`}}
+                    style={styles.petImg}
+                  />
+                <Text style={styles.textName}>{pet.name}</Text>
+                <Text style={styles.textBreed}>{pet.breed}</Text>
+              </View>
+                <View style={styles.contents}>
+                  <View style={styles.viewLocation}>
+                    <MaterialIcons name="location-on" color="#CE4A00" size={25}/>
+                      <Text style={styles.textLocationPet}>
+                        {pet.lastSee}
+                      </Text>
+                      <TouchableOpacity onPress={deleteLostPet}>
+                        <MaterialIcons name="delete-outline" size={24} color="#EB5757" />
+                      </TouchableOpacity>
+                  </View>
+                </View>
+            </View>
+          )}
       </View>
-      <Footer/>
+    </ScrollView>
+    <Footer/>
     </>
   )
 }

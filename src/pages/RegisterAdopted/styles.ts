@@ -3,7 +3,16 @@ import { StyleSheet } from 'react-native';
 export const styles = StyleSheet.create({
     contentsRegisterAdopted: {
         width: '100%',
-        padding: 20,
+    },
+    contentsRegister: {
+      display: 'flex',
+      alignItems: 'flex-start',
+      height: 'auto',
+      backgroundColor: '#fff',
+      borderRadius: 25,
+      paddingLeft: 20,
+      paddingRight: 20,
+      paddingBottom: 100,
     },
     imgStrayBig: {
         width: 360,
@@ -24,6 +33,17 @@ export const styles = StyleSheet.create({
         width: '100%',
         minWidth: 145,
         marginBottom: 10,
+    },
+    inputDescription: {
+      backgroundColor: '#f2f2f2',
+      padding: 14,
+      color: '#828282',
+      width: '100%',
+      height: 150,
+      textAlign: 'left',
+      textAlignVertical: 'top',
+      marginBottom: 10,
+      maxWidth: 350,
     },
     obs: {
       fontSize: 12,
