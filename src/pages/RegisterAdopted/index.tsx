@@ -70,6 +70,9 @@ const RegisterAdopted = (): JSX.Element => {
           placeholder='Descreva como foi esta adoção para você! :D'
           onChangeText={descriptionPet => setDescriptionPet(descriptionPet)}
           defaultValue={descriptionPet}
+          multiline= {true}
+          maxLength= {255}
+          numberOfLines = {5}
         />
       <Text>Compartilhe sua foto com o bixinho para o nosso mural de fotos!</Text>
       <TouchableOpacity

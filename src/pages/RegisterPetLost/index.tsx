@@ -107,6 +107,9 @@ const RegisterPetLost = (): JSX.Element => {
                         placeholder='Descreva características e detalhes'
                         onChangeText={descriptionPet => setDescriptionPet(descriptionPet)}
                         defaultValue={descriptionPet}
+                        multiline= {true}
+                        maxLength= {255}
+                        numberOfLines = {5}
                     />
                     <Text style={styles.label}>Último local que foi visto</Text>
                     <TextInput

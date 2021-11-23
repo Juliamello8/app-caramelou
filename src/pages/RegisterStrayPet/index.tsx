@@ -108,6 +108,9 @@ const RegisterStrayPet = (): JSX.Element => {
                         placeholder='Descreva características e detalhes.'
                         onChangeText={descriptionPet => setDescriptionPet(descriptionPet)}
                         defaultValue={descriptionPet}
+                        multiline= {true}
+                        maxLength= {255}
+                        numberOfLines = {5}
                     />
 
                     <TouchableOpacity
