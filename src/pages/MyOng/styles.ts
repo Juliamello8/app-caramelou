@@ -12,6 +12,7 @@ export const styles = StyleSheet.create({
     width: 123,
     height: 123,
     borderRadius: 100,
+    alignSelf: 'center',
     marginBottom: 20,
   },
   textName:{

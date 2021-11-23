@@ -3,6 +3,7 @@ import { StyleSheet } from 'react-native';
 export const styles = StyleSheet.create({
     contentsRegisterAdopted: {
         width: '100%',
+        paddingTop: 20,
     },
     contentsRegister: {
       display: 'flex',

@@ -15,7 +15,14 @@ export const styles = StyleSheet.create({
   viewContents:{
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'flex-start'
+    alignItems: 'flex-start',
+    width: "90%"
+  },
+  viewId:{
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   textTitle:{
     fontSize: 18,

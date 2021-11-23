@@ -2,6 +2,7 @@ import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
     containerRegister: {
+        paddingTop: 20,
         width: '100%',
     },
     contentsPetLost: {
@@ -18,6 +19,7 @@ export const styles = StyleSheet.create({
         height: 230,
         borderRadius: 10,
         marginBottom: 10,
+        resizeMode: 'cover',
     },
     locationPet: {
         fontSize: 18,

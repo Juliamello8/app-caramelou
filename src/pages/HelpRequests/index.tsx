@@ -12,6 +12,8 @@ import api from '~/services/api';
 const HelpRequests = (): JSX.Element => {
     const context = useContext(AppContext);
 
+    //console.log("teste" , context.user)
+
     useEffect(()=> {
         api.setHeaders({Authorization: `Bearer ${context.store.token}`})
         getHelpRequests()
@@ -51,12 +53,12 @@ const HelpRequests = (): JSX.Element => {
                 <Text style={styles.textButtonNewHelp}>cadastrar pedido</Text>
             </TouchableOpacity>
             {
-                    context.helpRequests.map((help:any) =>
-                    <View key={help.id}>
+                context.helpRequests.map((help:any) =>
+                <View key={help.id}>
                     <View style={styles.header}>
                     {/* SE PESSOA, ENTÃO photoProfile SE NÃO photoOng */}
                     <Image
-                        source={photoProfile}
+                        source={{ uri: `data:image/png;base64,${context.user?.image}`}}
                         style={styles.img}
                     />
                         <View

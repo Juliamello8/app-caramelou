@@ -11,6 +11,7 @@ export const styles = StyleSheet.create({
         paddingTop: 20,
     },
     img: {
+        borderRadius: 20,
         width: 42,
         height: 42,
         marginLeft: 25,
@@ -18,6 +19,7 @@ export const styles = StyleSheet.create({
     },
     helpInfos: {
         maxWidth: 200,
+        width: '40%',
     },
     helpTitle: {
         fontSize: 18,

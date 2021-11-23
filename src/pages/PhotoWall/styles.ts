@@ -14,6 +14,7 @@ export const styles = StyleSheet.create({
       height: 280,
       borderRadius: 10,
       marginBottom: 10,
+      resizeMode: 'cover',
   },
   namePet: {
       fontSize: 18,

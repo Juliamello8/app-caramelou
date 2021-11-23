@@ -42,19 +42,19 @@ const MyHelpRequests = (): JSX.Element => {
       <View style={styles.container}>
         {
           context.helpRequests.map((help:any) =>
-          <View key={help.id}>
+          <View key={help.id} style={styles.viewId}>
             <View style={styles.viewContents}>
-          <Text style={styles.textTitle}>{help.title}</Text>
-          <Text style={styles.textDescription}>{help.description}</Text>
-        </View>
-        <TouchableOpacity
-          onPress={deleteHelp}
-        >
-          <MaterialIcons name="delete-outline" size={24} color="#EB5757" />
-        </TouchableOpacity>
-      </View>
-          )}
+              <Text style={styles.textTitle}>{help.title}</Text>
+              <Text style={styles.textDescription}>{help.description}</Text>
+            </View>
+            <TouchableOpacity
+              onPress={deleteHelp}
+            >
+              <MaterialIcons name="delete-outline" size={24} color="#EB5757" />
+            </TouchableOpacity>
           </View>
+          )}
+      </View>
       <Footer/>
     </>
   )

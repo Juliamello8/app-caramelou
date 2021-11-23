@@ -44,24 +44,24 @@ const MyOng = (): JSX.Element => {
         {
           context.ongPet.map((ong:any) =>
           <View key={ong.id}>
-        <Image
-          source={{ uri: `data:image/png;base64,${ong.image}`}}
-          style={styles.ongImg}
-        />
-        <Text style={styles.textName}>{ong.name}</Text>
-        <Text style={styles.textCNPJ}>CNPJ: {ong.CNPJ} </Text>
-        <Text style={styles.textCNPJ}>Telefone: {ong.phone} </Text>
-        <Text style={styles.textCNPJ}>E-mail: {ong.mail} </Text>
-        <TouchableOpacity
-          onPress={deleteOng}
-          style={styles.buttonExclude}
-        >
-          <MaterialIcons name="delete-outline" size={24} color="#EB5757" />
-          <Text style={styles.textExclude}>Excluir ONG</Text>
-        </TouchableOpacity>
-      </View>
-          )}
+            <Image
+              source={{ uri: `data:image/png;base64,${ong.image}`}}
+              style={styles.ongImg}
+            />
+            <Text style={styles.textName}>{ong.name}</Text>
+            <Text style={styles.textCNPJ}>CNPJ: {ong.CNPJ} </Text>
+            <Text style={styles.textCNPJ}>Telefone: {ong.phone} </Text>
+            <Text style={styles.textCNPJ}>E-mail: {ong.mail} </Text>
+            <TouchableOpacity
+              onPress={deleteOng}
+              style={styles.buttonExclude}
+            >
+              <MaterialIcons name="delete-outline" size={24} color="#EB5757" />
+              <Text style={styles.textExclude}>Excluir ONG</Text>
+            </TouchableOpacity>
           </View>
+          )}
+      </View>
       <Footer/>
     </>
   )
