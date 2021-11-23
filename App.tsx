@@ -253,7 +253,8 @@ const App = (): JSX.Element => {
           component={Login}
           options={{
             title: "Login",
-            headerLeft: () => <></>
+            headerLeft: () => <></>,
+            headerShown: false
           }}
         />
         <Stack.Screen
