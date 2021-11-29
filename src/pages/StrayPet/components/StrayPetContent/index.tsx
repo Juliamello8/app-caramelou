@@ -49,11 +49,11 @@ const StrayPetContent = (): JSX.Element => {
                     <View style={styles.viewAdopted}>
                         <View>
                             <View style={styles.typeAndDate}>
-                                <Text style={styles.textDate}>
-                                    Data: {pet.date}
-                                </Text>
                                 <Text style={styles.textType}>
-                                    Última vez visto às: {pet.hour}
+                                    Data: {pet.date} 
+                                </Text>
+                                <Text style={styles.textDate}>
+                                    Última vez visto às: {pet.hour} 
                                 </Text>
                             </View>
                             <Text style={styles.descriptionPet}>

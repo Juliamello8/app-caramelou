@@ -64,11 +64,9 @@ export const styles = StyleSheet.create({
     },
     textType: {
         color: '#4f4f4f',
-        textAlign: 'left',
     },
     textDate: {
         color: '#4f4f4f',
-        textAlign: 'center',
-    },
+    }
 
 });

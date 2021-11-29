@@ -27,6 +27,38 @@ const RegisterPetLost = (): JSX.Element => {
     const [lastLocation, setLastLocation] = useState('');
     const [imageLost, setImageLost] = useState('');
 
+    // @ts-ignore
+    const checkValue = (str, max) => {
+        if (str.charAt(0) !== '0' || str == '00') {
+        var num = parseInt(str);
+        if (isNaN(num) || num <= 0 || num > max) num = 1;
+        str =
+            num > parseInt(max.toString().charAt(0)) && num.toString().length == 1
+            ? '0' + num
+            : num.toString();
+        }
+        return str;
+    };
+        // @ts-ignore
+    const handleDateLost = value => {
+        var input = value;
+        let currentYear = new Date().getFullYear();
+        if (/\D\/$/.test(input)) input = input.substr(0, input.length - 3);
+        // @ts-ignore
+        var values = input.split('/').map(function (v) {
+        return v.replace(/\D/g, '');
+        });
+        if (values[0]) values[0] = checkValue(values[0], 31);
+        if (values[1]) values[1] = checkValue(values[1], 12);
+        if (values[2]) values[2] = checkValue(values[2], currentYear);
+        // @ts-ignore
+        var output = values.map(function (v, i) {
+        return v.length == 2 && i < 2 ? v + '/' : v;
+        });
+        value = output.join('').substr(0, 14);
+        setDateLost(value);
+    };
+
     let openImagePickerAsync = async () => {
         let permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
         
@@ -87,8 +119,14 @@ const RegisterPetLost = (): JSX.Element => {
                             <TextInput
                                 style={styles.input}
                                 placeholder='Ex.: 10/03/2021'
-                                onChangeText={dateLost => setDateLost(dateLost)}
                                 defaultValue={dateLost}
+                                value={dateLost}
+                                keyboardType="number-pad"
+                                maxLength={14}
+                                returnKeyType="done"
+                                spellCheck={false}
+                                autoCorrect={false}
+                                onChangeText={val => handleDateLost(val)}
                             />
                         </View>
                         <View>
